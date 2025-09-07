@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>影像学术研究计算工具 v3.2</title>
+    <title>影像学术研究计算工具 v3.3</title>
     <style>
         :root {
             --primary: #4f46e5;
@@ -113,7 +113,7 @@
             display: inline-block;
         }
 
-        /* 电子钟样式 */
+        /* 电子钟样式 - 移动端优化 */
         .clock-container {
             background: linear-gradient(145deg, #ffffff, #f8f9fa);
             border: 2px solid transparent;
@@ -122,7 +122,7 @@
             padding: 20px;
             margin: 25px 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             box-shadow: 
                 0 8px 32px rgba(79, 70, 229, 0.1),
@@ -165,6 +165,8 @@
             display: flex;
             gap: 12px;
             align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .digit-group {
@@ -716,7 +718,13 @@
             .container { padding: 20px; }
             h1 { font-size: 2.2em; }
             .form-row { grid-template-columns: 1fr; gap: 15px; }
-            .theme-toggle { position: relative; margin-bottom: 20px; }
+            .theme-toggle { 
+                position: relative; 
+                margin-bottom: 20px; 
+                top: auto;
+                right: auto;
+                align-self: center;
+            }
             .btn-group { flex-direction: column; }
             
             .category-grid {
@@ -735,69 +743,119 @@
 
             /* 移动端电子钟优化 */
             .clock-container {
-                padding: 25px 15px;
-                margin: 25px 0;
-                border-radius: 20px;
+                padding: 15px 10px;
+                margin: 20px 0;
+                border-radius: 16px;
+                background: linear-gradient(145deg, #ffffff, #f8f9fa);
             }
             
             .digits-container {
-                gap: 10px;
-                transform: scale(1.1);
+                gap: 6px;
+                justify-content: center;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding: 0 10px;
+                min-width: 100%;
+            }
+            
+            .digit-group {
+                gap: 4px;
+                flex-shrink: 0;
             }
             
             .digit {
-                width: 55px;
-                height: 90px;
-                border-radius: 10px;
-                padding: 10px;
+                width: 45px;
+                height: 75px;
+                border-radius: 8px;
+                padding: 6px;
                 box-shadow: 
-                    0 4px 12px rgba(0, 0, 0, 0.15),
+                    0 3px 10px rgba(0, 0, 0, 0.12),
                     inset 0 2px 4px rgba(255, 255, 255, 0.8),
                     inset 0 -2px 3px rgba(0, 0, 0, 0.05);
+                min-width: 45px;
             }
             
             .digit:hover {
-                transform: translateY(-2px);
+                transform: none;
             }
             
-            /* 移动端段更粗更清晰 */
+            /* 移动端段更细更清晰 */
             .segment-a, .segment-d, .segment-g {
-                width: 35px;
-                height: 6px;
-                left: 10px;
+                width: 29px;
+                height: 5px;
+                left: 8px;
             }
             
             .segment-b, .segment-c, .segment-e, .segment-f {
-                width: 6px;
-                height: 32px;
+                width: 5px;
+                height: 26px;
             }
             
             .segment-b, .segment-c {
-                right: 10px;
+                right: 8px;
             }
             
             .segment-e, .segment-f {
-                left: 10px;
+                left: 8px;
             }
             
-            .segment-a { top: 10px; }
-            .segment-d { bottom: 10px; }
+            .segment-a { top: 8px; }
+            .segment-d { bottom: 8px; }
             .segment-g { top: 50%; transform: translateY(-50%); }
-            .segment-b { top: 14px; }
-            .segment-c { bottom: 14px; }
-            .segment-e { bottom: 14px; }
-            .segment-f { top: 14px; }
+            .segment-b { top: 11px; }
+            .segment-c { bottom: 11px; }
+            .segment-e { bottom: 11px; }
+            .segment-f { top: 11px; }
             
             .clock-colon {
-                font-size: 2.2rem;
-                margin: 0 6px;
+                font-size: 1.8rem;
+                margin: 0 4px;
                 font-weight: 900;
+                line-height: 1;
+                flex-shrink: 0;
             }
             
             .clock-label {
-                font-size: 14px;
-                margin-top: 15px;
+                font-size: 12px;
+                margin-top: 10px;
                 font-weight: 600;
+            }
+
+            /* 确保电子钟在小屏幕上完全可见 */
+            @media (max-width: 480px) {
+                .digits-container {
+                    gap: 3px;
+                    padding: 0 5px;
+                }
+                
+                .digit-group {
+                    gap: 2px;
+                }
+                
+                .digit {
+                    width: 38px;
+                    height: 65px;
+                    min-width: 38px;
+                }
+                
+                .segment-a, .segment-d, .segment-g {
+                    width: 24px;
+                    height: 4px;
+                    left: 7px;
+                }
+                
+                .segment-b, .segment-c, .segment-e, .segment-f {
+                    width: 4px;
+                    height: 22px;
+                }
+                
+                .segment-b, .segment-c { right: 7px; }
+                .segment-e, .segment-f { left: 7px; }
+                
+                .clock-colon {
+                    font-size: 1.5rem;
+                    margin: 0 2px;
+                }
             }
         }
 
@@ -818,7 +876,7 @@
                 <span id="theme-text">夜间模式</span>
             </div>
             <h1>影像学术研究计算工具</h1>
-            <div class="subtitle">CTA造影剂用量与BMI学术参考计算 v3.2</div>
+            <div class="subtitle">CTA造影剂用量与BMI学术参考计算 v3.3</div>
             <div class="developer-info">
                 💻 程序开发者：影像涛哥
             </div>
@@ -893,8 +951,8 @@
                         </div>
                     </div>
                 </div>
+                <div class="clock-label">当前时间</div>
             </div>
-            <div class="clock-label">当前时间</div>
         </div>
         
         <!-- 患者分类选择器 -->
@@ -1621,6 +1679,34 @@
             return Math.round(eGFR);
         }
 
+        // 生成简化的eGFR计算过程
+        function generateSimplifiedEGFRCalculation(creatinine_umol, age, gender) {
+            let formula = '';
+            let result = '';
+            
+            if (gender === 'female') {
+                if (creatinine_umol <= 62) {
+                    formula = `女性，Scr ≤ 62 μmol/L：eGFR = 142 × (${creatinine_umol}/62)^(-0.241) × 0.9938^${age} × 1.012`;
+                } else {
+                    formula = `女性，Scr > 62 μmol/L：eGFR = 142 × (62/${creatinine_umol})^1.2 × 0.9938^${age} × 1.012`;
+                }
+            } else {
+                if (creatinine_umol <= 80) {
+                    formula = `男性，Scr ≤ 80 μmol/L：eGFR = 142 × (${creatinine_umol}/80)^(-0.302) × 0.9938^${age}`;
+                } else {
+                    formula = `男性，Scr > 80 μmol/L：eGFR = 142 × (80/${creatinine_umol})^1.2 × 0.9938^${age}`;
+                }
+            }
+            
+            result = calculateEGFR_2021_Corrected(creatinine_umol, age, gender);
+            
+            return {
+                formula: formula,
+                result: result,
+                simplifiedCalculation: `${formula} = ${result}`
+            };
+        }
+
         // 更新公式显示
         function updateRenalFormulaDisplay() {
             updateFormulaDisplay('renal');
@@ -1977,13 +2063,15 @@
 
                 if (validationErrors.length === 0) {
                     const eGFR = calculateEGFR_2021_Corrected(creatinine, age, gender);
+                    const eGFRDetails = generateSimplifiedEGFRCalculation(creatinine, age, gender);
                     
                     specialData = {
                         eGFR,
                         creatinine,
                         age,
                         gender,
-                        calculationMethod: '2021版CKD-EPI（直接计算）'
+                        calculationMethod: '2021版CKD-EPI（简化计算）',
+                        eGFRDetails
                     };
                     
                     if (type === 'metformin') {
@@ -2178,9 +2266,9 @@
                 } else if (data.eGFR >= 45) {
                     recommendations.push('适当减少造影剂用量', '加强水化治疗', '造影后24-48小时复查肾功能');
                 } else if (data.eGFR >= 30) {
-                    recommendations.push('造影剂用量减至80%', '充分静脉水化', '密切关注有无过敏反应', '造影后48-72小时密切监测');
+                    recommendations.push('造影剂用量减至80%', '充分静脉水化', '密切关注有无过敏反应', '密切监测48-72小时');
                 } else {
-                    recommendations.push('强烈建议避免造影剂检查', '考虑MRI等替代检查', '如必须检查需肾内科会诊');
+                    recommendations.push('强烈建议避免造影剂检查', '考虑MRI、超声等替代检查', '如必须检查需肾内科会诊');
                 }
                 
                 specialAssessment = `
@@ -2378,9 +2466,7 @@
                     }<br>
                     <strong>注射流速：</strong>${results.examType === 'coronary' ? '用量÷12s' : '(用量-15ml)÷12s'}<br>
                     <strong>安全限制：</strong>${results.examType === 'coronary' ? '冠脉CTA最大60ml' : '胸痛三联最大75ml'}，流速最大5.0ml/s<br>
-                    <strong>静脉通路：</strong>右肘中静脉，注射压力<300psi<br>
-                    <strong>设备依据：</strong>联影CT960+设备技术参数<br>
-                    <strong>程序版本：</strong>v3.2，集成实时电子钟显示功能
+                    <strong>程序版本：</strong>v3.3，集成实时电子钟显示功能，增强eGFR演算展示
                 </div>
             `;
             
@@ -2388,7 +2474,7 @@
             resultsDiv.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // PDF导出功能 - 增强错误处理
+        // PDF导出功能 - 简化版
         function exportToPDF() {
             if (!appState.currentResults) {
                 showNotification('没有可导出的计算结果', 'warning');
@@ -2417,7 +2503,7 @@
                     return;
                 }
                 
-                const pdfContent = generatePDFContent(results, reportNumber);
+                const pdfContent = generateSimplifiedPDFContent(results, reportNumber);
                 
                 // 安全地写入内容
                 pdfWindow.document.open();
@@ -2449,7 +2535,7 @@
             }
         }
 
-        function generatePDFContent(results, reportNumber) {
+        function generateSimplifiedPDFContent(results, reportNumber) {
             const currentDate = new Date().toLocaleString();
             
             let bmiStatus = '';
@@ -2615,6 +2701,22 @@
                         <div class="assessment-content">
                             风险评分${risk.riskScore}分, <span style="color: ${riskColor}; font-weight: bold;">${risk.clinicalAction}</span><br>
                             监护方案: ${monitoringPlan}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 生成简化的eGFR详细演算过程（针对肾功能异常和二甲双胍患者）
+            let eGFRCalculationSection = '';
+            if ((results.patientType === 'renal' || results.patientType === 'metformin') && results.specialData && results.specialData.eGFRDetails) {
+                const eGFRDetails = results.specialData.eGFRDetails;
+                eGFRCalculationSection = `
+                    <div class="calculation-details">
+                        <h3>eGFR简化演算过程</h3>
+                        <div class="calculation-steps">
+                            <strong>2021版CKD-EPI公式：</strong><br>
+                            <pre style="font-size: 9px; line-height: 1.2; white-space: pre-wrap; background: #f8f9fa; padding: 6px; border-radius: 4px; margin: 3px 0; font-family: 'Courier New', monospace;">${eGFRDetails.simplifiedCalculation}</pre>
+                            <strong>最终结果：</strong> eGFR = ${eGFRDetails.result} ml/min/1.73m²
                         </div>
                     </div>
                 `;
@@ -2806,6 +2908,28 @@
             line-height: 1.4;
             color: #1e40af;
         }
+
+        .calculation-details {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #fefce8, #fef3c7);
+            border: 1.5px solid #eab308;
+            border-radius: 6px;
+            padding: 12px 15px;
+            margin: 8px 0;
+        }
+
+        .calculation-details h3 {
+            color: #92400e;
+            font-size: 11px;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+        }
+
+        .calculation-steps {
+            font-size: 9px;
+            line-height: 1.3;
+            color: #92400e;
+        }
         
         .tech-specs {
             background: linear-gradient(135deg, #f8f9fa, #f1f3f4);
@@ -2837,7 +2961,7 @@
 <body>
     <div class="header">
         <h1>影像学术研究计算结果</h1>
-        <div class="subtitle">CTA造影剂用量与BMI学术参考计算 v3.2 - ${patientTypeText}</div>
+        <div class="subtitle">CTA造影剂用量与BMI学术参考计算 v3.3 - ${patientTypeText}</div>
         <div class="meta-info">
             计算时间: ${results.timestamp.toLocaleString()} | 生成时间: ${currentDate} | 编号: ${reportNumber}
         </div>
@@ -2927,6 +3051,8 @@
         
         ${assessmentResults}
         
+        ${eGFRCalculationSection}
+        
         ${safetySection}
         
         <div class="calculation-summary">
@@ -2940,16 +3066,13 @@
                 <strong>注射流速:</strong> ${results.examType === 'coronary' ? '用量÷12s' : '(用量-15ml)÷12s'}
                 ${results.contrastAdjustment ? `<br><strong>调整依据:</strong> ${results.contrastAdjustment}` : ''}
                 ${results.specialData && (results.patientType === 'renal' || results.patientType === 'metformin') ? 
-                `<br><strong>eGFR计算:</strong> 2021版CKD-EPI公式（无种族系数），${results.specialData.gender === 'male' ? '男性' : '女性'}${results.specialData.age}岁患者` : ''}
+                `<br><strong>eGFR计算:</strong> 2021版CKD-EPI公式（无种族系数），${results.specialData.gender === 'male' ? '男性' : '女性'}${results.specialData.age}岁患者，详细演算过程见上方` : ''}
             </div>
         </div>
     </div>
     
     <div class="tech-specs">
-        <strong>技术规范:</strong> 联影CT960+设备参数 | 
-        <strong>静脉通路:</strong> 右肘中静脉 | 
-        <strong>注射压力:</strong> <300psi | 
-        <strong>程序版本:</strong> v3.2 | 
+        <strong>程序版本:</strong> v3.3 | 
         <strong>开发者:</strong> 影像涛哥 | 
         <strong>计算标准:</strong> 基于联影设备技术参数与临床研究数据
     </div>
