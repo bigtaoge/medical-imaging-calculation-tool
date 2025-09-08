@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>影像学术研究计算工具 v3.3</title>
+    <title>影像学术研究计算工具 v3.4</title>
     <style>
         :root {
             --primary: #4f46e5;
@@ -211,18 +211,15 @@
                 inset 0 1px 1px rgba(255, 255, 255, 0.1);
         }
 
-        /* 暗色主题下的段样式 */
         [data-theme="dark"] .segment.active {
             background: #ffffff !important;
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.4) !important;
         }
 
-        /* 水平段 */
         .segment-a { top: 8px; left: 12px; width: 36px; height: 8px; }
         .segment-d { bottom: 8px; left: 12px; width: 36px; height: 8px; }
         .segment-g { top: 50%; left: 12px; width: 36px; height: 8px; transform: translateY(-50%); }
 
-        /* 垂直段 */
         .segment-b { top: 12px; right: 8px; width: 8px; height: 36px; }
         .segment-c { bottom: 12px; right: 8px; width: 8px; height: 36px; }
         .segment-e { bottom: 12px; left: 8px; width: 8px; height: 36px; }
@@ -246,7 +243,6 @@
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
-        /* 暗色主题下的电子钟样式 */
         [data-theme="dark"] .clock-container {
             background: linear-gradient(145deg, #1e293b, #334155);
             box-shadow: 
@@ -269,7 +265,6 @@
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.4) !important;
         }
 
-        /* 患者分类选择器 */
         .patient-category-selector {
             background: var(--card);
             border-radius: 20px;
@@ -375,7 +370,6 @@
         .category-card.metformin .category-name { color: var(--metformin-color); }
         .category-card.heart .category-name { color: var(--heart-color); }
 
-        /* 表单区域 */
         .form-container {
             display: none;
             animation: slideIn 0.5s ease;
@@ -510,7 +504,6 @@
             border-left-color: var(--heart-color);
         }
 
-        /* 分级标准表格样式 */
         .grading-table {
             width: 100%;
             margin: 15px 0;
@@ -704,7 +697,6 @@
             color: #b45309;
         }
 
-        /* 暗色主题适配 */
         [data-theme="dark"] .grading-table {
             background: #1e293b;
         }
@@ -741,7 +733,6 @@
                 padding: 6px 4px;
             }
 
-            /* 移动端电子钟优化 */
             .clock-container {
                 padding: 15px 10px;
                 margin: 20px 0;
@@ -779,7 +770,6 @@
                 transform: none;
             }
             
-            /* 移动端段更细更清晰 */
             .segment-a, .segment-d, .segment-g {
                 width: 29px;
                 height: 5px;
@@ -821,7 +811,6 @@
                 font-weight: 600;
             }
 
-            /* 确保电子钟在小屏幕上完全可见 */
             @media (max-width: 480px) {
                 .digits-container {
                     gap: 3px;
@@ -876,7 +865,7 @@
                 <span id="theme-text">夜间模式</span>
             </div>
             <h1>影像学术研究计算工具</h1>
-            <div class="subtitle">CTA造影剂用量与BMI学术参考计算 v3.3</div>
+            <div class="subtitle">CTA造影剂用量与BMI学术参考计算 v3.4</div>
             <div class="developer-info">
                 💻 程序开发者：影像涛哥
             </div>
@@ -1067,7 +1056,6 @@
                     • 必须进行充分水化治疗
                 </div>
 
-                <!-- 内置肾功能分级标准 -->
                 <div class="info-box normal">
                     <strong>📊 肾功能异常患者分级标准（基于eGFR）：</strong><br>
                     <table class="grading-table">
@@ -1188,7 +1176,6 @@
                     • 必要时内分泌科会诊
                 </div>
 
-                <!-- 内置二甲双胍风险分组标准 -->
                 <div class="info-box normal">
                     <strong>💊 二甲双胍患者风险分组标准：</strong><br>
                     <table class="grading-table">
@@ -1321,7 +1308,6 @@
                     • 监测BNP/NT-proBNP水平
                 </div>
 
-                <!-- 内置心功能风险分级标准 -->
                 <div class="info-box normal">
                     <strong>❤️ 心功能不全患者风险分级标准：</strong><br>
                     <table class="grading-table">
@@ -1472,7 +1458,7 @@
             <p><span class="highlight">设备依据：</span>本工具计算公式基于联影CT960+设备的技术参数和临床研究数据。</p>
             <p><span class="highlight">学术用途：</span>仅供影像技术教学、学术研究使用，严禁用于临床诊断或治疗决策。</p>
             <p><span class="highlight">四类分组：</span>正常患者采用标准计算，肾功能异常患者需eGFR评估，二甲双胍患者需风险评估，心功能不全患者需NYHA分级评估。</p>
-            <p><span class="highlight">eGFR计算：</span>采用2021版CKD-EPI公式（无种族系数），适用于中国人群，计算方式已优化修正。</p>
+            <p><span class="highlight">eGFR计算：</span>采用2021版CKD-EPI公式（无种族系数），适用于中国人群。</p>
             <p><span class="highlight">安全限制：</span>程序已设置造影剂用量和注射流速的安全上限，但实际使用需结合患者具体情况充分评估血管通路、心肾功能。</p>
             <p style="margin-top: 15px; font-weight: 700; color: #b45309; border-top: 1px solid #fed7aa; padding-top: 15px;">
                 开发者不承担任何直接或间接的法律责任；使用即表示同意本声明。程序使用过程中如遇到问题及反馈，请联系邮箱：lucky@taothink.com
@@ -1509,12 +1495,10 @@
             const minutes = now.getMinutes();
             const seconds = now.getSeconds();
 
-            // 格式化时间各部分
             const hoursStr = hours.toString().padStart(2, '0');
             const minutesStr = minutes.toString().padStart(2, '0');
             const secondsStr = seconds.toString().padStart(2, '0');
 
-            // 更新数码管显示
             displayDigit(document.getElementById('hour-tens'), hoursStr[0]);
             displayDigit(document.getElementById('hour-ones'), hoursStr[1]);
             displayDigit(document.getElementById('min-tens'), minutesStr[0]);
@@ -1523,7 +1507,6 @@
             displayDigit(document.getElementById('sec-ones'), secondsStr[1]);
         }
 
-        // 显示数字到7段数码管
         function displayDigit(digitElement, number) {
             if (!digitElement) return;
             
@@ -1531,17 +1514,13 @@
             const config = digitConfig[number] || digitConfig['0'];
 
             segments.forEach((segment, index) => {
-                // 首先移除所有激活状态
                 segment.classList.remove('active');
-                
-                // 然后根据配置添加激活状态
                 if (config[index] === 1) {
                     segment.classList.add('active');
                 }
             });
         }
 
-        // 主题切换功能
         function toggleTheme() {
             try {
                 appState.isDarkMode = !appState.isDarkMode;
@@ -1559,7 +1538,6 @@
                     if (themeText) themeText.textContent = '夜间模式';
                 }
                 
-                // 主题切换后强制更新一次时钟显示
                 setTimeout(updateClock, 100);
                 
             } catch (error) {
@@ -1568,97 +1546,78 @@
             }
         }
 
-        // 患者类型选择
         function selectPatientType(type) {
             appState.currentPatientType = type;
             
-            // 更新UI状态
             document.querySelectorAll('.category-card').forEach(card => {
                 card.classList.remove('active');
             });
             document.querySelector(`.category-card.${type}`).classList.add('active');
             
-            // 隐藏所有表单
             document.querySelectorAll('.form-container').forEach(form => {
                 if (form.id !== 'actionForm') {
                     form.classList.remove('show');
                 }
             });
             
-            // 显示对应表单
             const targetForm = document.getElementById(`${type}Form`);
             if (targetForm) {
                 targetForm.classList.add('show');
             }
             
-            // 重置结果
             const results = document.getElementById('results');
             results.classList.remove('show');
             appState.currentResults = null;
             
-            // 更新进度
             updateProgress();
             
-            // 滚动到表单区域
             setTimeout(() => {
                 targetForm.scrollIntoView({ behavior: 'smooth' });
             }, 100);
         }
 
-        // 重置表单
         function resetForm() {
-            // 清除患者类型选择
             appState.currentPatientType = null;
             document.querySelectorAll('.category-card').forEach(card => {
                 card.classList.remove('active');
             });
             
-            // 隐藏所有表单
             document.querySelectorAll('.form-container').forEach(form => {
                 if (form.id !== 'actionForm') {
                     form.classList.remove('show');
                 }
             });
             
-            // 清除所有输入
             document.querySelectorAll('input[type="number"]').forEach(input => {
                 input.value = '';
                 input.classList.remove('input-error');
             });
             
-            // 重置所有选择框
             document.querySelectorAll('select').forEach(select => {
                 select.selectedIndex = 0;
             });
             
-            // 清除验证状态
             document.querySelectorAll('.real-time-validation').forEach(el => {
                 el.textContent = '';
             });
             
-            // 隐藏错误消息
             document.querySelectorAll('.error-message').forEach(el => {
                 el.style.display = 'none';
             });
             
-            // 隐藏公式显示
             document.querySelectorAll('.formula-display').forEach(el => {
                 el.style.display = 'none';
             });
             
-            // 重置结果
             const results = document.getElementById('results');
             results.classList.remove('show');
             appState.currentResults = null;
             
-            // 重置进度条
             updateProgress();
             
-            // 禁用按钮
             document.getElementById('calculateBtn').disabled = true;
             document.getElementById('pdfBtn').disabled = true;
             
-            // 滚动到顶部
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
             showNotification('✅ 表单已重置，请重新选择患者类型', 'success');
@@ -1672,13 +1631,13 @@
                 if (creatinine_umol <= 62) {
                     eGFR = 142 * Math.pow(creatinine_umol / 62, -0.241) * Math.pow(0.9938, age) * 1.012;
                 } else {
-                    eGFR = 142 * Math.pow(62 / creatinine_umol, 1.2) * Math.pow(0.9938, age) * 1.012;
+                    eGFR = 142 * Math.pow(creatinine_umol / 62, -1.2) * Math.pow(0.9938, age) * 1.012;
                 }
             } else {
                 if (creatinine_umol <= 80) {
                     eGFR = 142 * Math.pow(creatinine_umol / 80, -0.302) * Math.pow(0.9938, age);
                 } else {
-                    eGFR = 142 * Math.pow(80 / creatinine_umol, 1.2) * Math.pow(0.9938, age);
+                    eGFR = 142 * Math.pow(creatinine_umol / 80, -1.2) * Math.pow(0.9938, age);
                 }
             }
             
@@ -1694,13 +1653,13 @@
                 if (creatinine_umol <= 62) {
                     formula = `女性，Scr ≤ 62 μmol/L：eGFR = 142 × (${creatinine_umol}/62)^(-0.241) × 0.9938^${age} × 1.012`;
                 } else {
-                    formula = `女性，Scr > 62 μmol/L：eGFR = 142 × (62/${creatinine_umol})^1.2 × 0.9938^${age} × 1.012`;
+                    formula = `女性，Scr > 62 μmol/L：eGFR = 142 × (${creatinine_umol}/62)^(-1.2) × 0.9938^${age} × 1.012`;
                 }
             } else {
                 if (creatinine_umol <= 80) {
                     formula = `男性，Scr ≤ 80 μmol/L：eGFR = 142 × (${creatinine_umol}/80)^(-0.302) × 0.9938^${age}`;
                 } else {
-                    formula = `男性，Scr > 80 μmol/L：eGFR = 142 × (80/${creatinine_umol})^1.2 × 0.9938^${age}`;
+                    formula = `男性，Scr > 80 μmol/L：eGFR = 142 × (${creatinine_umol}/80)^(-1.2) × 0.9938^${age}`;
                 }
             }
             
@@ -1713,7 +1672,6 @@
             };
         }
 
-        // 更新公式显示
         function updateRenalFormulaDisplay() {
             updateFormulaDisplay('renal');
         }
@@ -1737,13 +1695,13 @@
                 if (creatinine <= 62) {
                     formulaText = `女性，Scr ≤ 62 μmol/L：eGFR = 142 × (${creatinine}/62)^(-0.241) × 0.9938^年龄 × 1.012`;
                 } else {
-                    formulaText = `女性，Scr > 62 μmol/L：eGFR = 142 × (62/${creatinine})^1.2 × 0.9938^年龄 × 1.012`;
+                    formulaText = `女性，Scr > 62 μmol/L：eGFR = 142 × (${creatinine}/62)^(-1.2) × 0.9938^年龄 × 1.012`;
                 }
             } else {
                 if (creatinine <= 80) {
                     formulaText = `男性，Scr ≤ 80 μmol/L：eGFR = 142 × (${creatinine}/80)^(-0.302) × 0.9938^年龄`;
                 } else {
-                    formulaText = `男性，Scr > 80 μmol/L：eGFR = 142 × (80/${creatinine})^1.2 × 0.9938^年龄`;
+                    formulaText = `男性，Scr > 80 μmol/L：eGFR = 142 × (${creatinine}/80)^(-1.2) × 0.9938^年龄`;
                 }
             }
             
@@ -1751,7 +1709,6 @@
             formulaDisplay.style.display = 'block';
         }
 
-        // 心功能不全风险评估
         function assessHeartFailureRisk(nyha, ef, bnp) {
             let riskLevel = 'low';
             let recommendations = [];
@@ -1838,7 +1795,6 @@
             return score;
         }
 
-        // 实时输入验证
         function setupRealTimeValidation() {
             const validationRules = {
                 Height: { min: 100, max: 250, message: '身高必须在100-250cm之间' },
@@ -1883,7 +1839,7 @@
             if (isValid) {
                 field.classList.remove('input-error');
                 if (validationEl) {
-                    validationEl.textContent = '✔';
+                    validationEl.textContent = '✓';
                     validationEl.className = 'real-time-validation validation-success';
                 }
                 if (errorEl) errorEl.style.display = 'none';
@@ -1942,7 +1898,6 @@
             return baseFields;
         }
 
-        // 二甲双胍风险评估
         function assessMetforminRisk(eGFR, dose, age) {
             let riskLevel = 'low';
             let recommendations = [];
@@ -2018,7 +1973,6 @@
             return score;
         }
 
-        // 主计算函数
         function calculate() {
             if (!appState.currentPatientType) {
                 showNotification('请先选择患者类型', 'error');
@@ -2076,7 +2030,7 @@
                         creatinine,
                         age,
                         gender,
-                        calculationMethod: '2021版CKD-EPI（简化计算）',
+                        calculationMethod: '2021版CKD-EPI公式',
                         eGFRDetails
                     };
                     
@@ -2465,14 +2419,14 @@
                 
                 <div class="info-box normal">
                     <strong>计算依据：</strong><br>
-                    <strong>eGFR公式：</strong>2021版CKD-EPI肾小球滤过率方程（无种族系数，直接使用μmol/L）<br>
+                    <strong>eGFR公式：</strong>2021版CKD-EPI肾小球滤过率方程（无种族系数）<br>
                     <strong>造影剂用量：</strong>${results.examType === 'coronary' ? 
                         (results.heartRate <= 80 ? '冠脉CTA心率≤80：体重×0.8ml/kg' : '冠脉CTA心率>80：体重×0.85ml/kg') :
                         (results.heartRate <= 80 ? '胸痛三联心率≤80：体重×0.8ml/kg + 15ml' : '胸痛三联心率>80：体重×0.85ml/kg + 15ml')
                     }<br>
                     <strong>注射流速：</strong>${results.examType === 'coronary' ? '用量÷12s' : '(用量-15ml)÷12s'}<br>
                     <strong>安全限制：</strong>${results.examType === 'coronary' ? '冠脉CTA最大60ml' : '胸痛三联最大75ml'}，流速最大5.0ml/s<br>
-                    <strong>程序版本：</strong>v3.3，集成实时电子钟显示功能，增强eGFR演算展示
+                    <strong>程序版本：</strong>v3.4版本，基于2021版CKD-EPI公式计算
                 </div>
             `;
             
@@ -2480,7 +2434,6 @@
             resultsDiv.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // PDF导出功能 - 简化版
         function exportToPDF() {
             if (!appState.currentResults) {
                 showNotification('没有可导出的计算结果', 'warning');
@@ -2490,7 +2443,6 @@
             try {
                 const results = appState.currentResults;
                 
-                // 验证结果数据完整性
                 if (!results.height || !results.weight || !results.bmi || !results.contrastVolume) {
                     throw new Error('计算结果数据不完整，无法生成PDF');
                 }
@@ -2498,7 +2450,6 @@
                 const reportId = Date.now().toString(36).toUpperCase();
                 const reportNumber = `${new Date().getFullYear()}${(new Date().getMonth() + 1).toString().padStart(2, '0')}${new Date().getDate().toString().padStart(2, '0')}_${reportId}`;
                 
-                // 检查浏览器兼容性
                 if (typeof window.open !== 'function') {
                     throw new Error('当前浏览器不支持PDF导出功能');
                 }
@@ -2511,12 +2462,10 @@
                 
                 const pdfContent = generateSimplifiedPDFContent(results, reportNumber);
                 
-                // 安全地写入内容
                 pdfWindow.document.open();
                 pdfWindow.document.write(pdfContent);
                 pdfWindow.document.close();
                 
-                // 设置错误处理
                 pdfWindow.onerror = function(error) {
                     console.error('PDF窗口错误:', error);
                     showNotification('PDF生成过程中出现错误', 'error');
@@ -2561,7 +2510,6 @@
                 case 'heart': patientTypeText = '心功能不全患者'; break;
             }
 
-            // 生成患者特定信息
             let patientSpecificInfo = '';
             
             if (results.patientType === 'normal') {
@@ -2637,7 +2585,6 @@
                 `;
             }
 
-            // 生成专科评估结果
             let assessmentResults = '';
             
             if (results.patientType === 'normal') {
@@ -2712,13 +2659,12 @@
                 `;
             }
 
-            // 生成简化的eGFR详细演算过程（针对肾功能异常和二甲双胍患者）
             let eGFRCalculationSection = '';
             if ((results.patientType === 'renal' || results.patientType === 'metformin') && results.specialData && results.specialData.eGFRDetails) {
                 const eGFRDetails = results.specialData.eGFRDetails;
                 eGFRCalculationSection = `
                     <div class="calculation-details">
-                        <h3>eGFR简化演算过程</h3>
+                        <h3>eGFR详细演算过程</h3>
                         <div class="calculation-steps">
                             <strong>2021版CKD-EPI公式：</strong><br>
                             <pre style="font-size: 9px; line-height: 1.2; white-space: pre-wrap; background: #f8f9fa; padding: 6px; border-radius: 4px; margin: 3px 0; font-family: 'Courier New', monospace;">${eGFRDetails.simplifiedCalculation}</pre>
@@ -2728,7 +2674,6 @@
                 `;
             }
 
-            // 生成安全提示部分
             let safetySection = '';
             if (results.isVolumeExceeded || results.isFlowRateExceeded || results.contrastAdjustment) {
                 let warnings = [];
@@ -2967,7 +2912,7 @@
 <body>
     <div class="header">
         <h1>影像学术研究计算结果</h1>
-        <div class="subtitle">CTA造影剂用量与BMI学术参考计算 v3.3 - ${patientTypeText}</div>
+        <div class="subtitle">CTA造影剂用量与BMI学术参考计算 v3.4 - ${patientTypeText}</div>
         <div class="meta-info">
             计算时间: ${results.timestamp.toLocaleString()} | 生成时间: ${currentDate} | 编号: ${reportNumber}
         </div>
@@ -3078,20 +3023,20 @@
     </div>
     
     <div class="tech-specs">
-        <strong>程序版本:</strong> v3.3 | 
+        <strong>程序版本:</strong> v3.4 | 
         <strong>开发者:</strong> 影像涛哥 | 
-        <strong>计算标准:</strong> 基于联影设备技术参数与临床研究数据
+        <strong>计算标准:</strong> 基于联影设备技术参数与临床研究数据 | 
+        <strong>计算公式:</strong> 2021版CKD-EPI肾小球滤过率方程（无种族系数）
     </div>
     
     <div class="footer">
         <p><strong>重要声明:</strong> 本计算结果仅供影像技术教学和学术研究参考，严禁用于临床诊断或治疗决策。实际使用时必须结合患者具体病史、实验室检查结果和临床医师判断。开发者不承担任何法律责任。</p>
-        <p><strong>结果编号:</strong> ${reportNumber} | <strong>技术支持:</strong> 联影CT960+平台 | <strong>使用许可:</strong> 仅限学术研究用途</p>
+        <p><strong>结果编号:</strong> ${reportNumber} | <strong>技术支持:</strong> 联影CT960+平台 | <strong>使用许可:</strong> 仅限学术研究用途 | <strong>eGFR公式:</strong> 2021版CKD-EPI方程</p>
     </div>
 </body>
 </html>`;
         }
 
-        // 通知显示函数
         function showNotification(message, type = 'info') {
             const notification = document.createElement('div');
             notification.style.cssText = `
@@ -3123,12 +3068,10 @@
             }, 3000);
         }
 
-        // 页面初始化
         document.addEventListener('DOMContentLoaded', function() {
             try {
-                // 初始化电子钟
                 updateClock();
-                setInterval(updateClock, 1000); // 每秒更新一次
+                setInterval(updateClock, 1000);
                 
                 setupRealTimeValidation();
                 updateProgress();
@@ -3145,7 +3088,6 @@
             }
         });
 
-        // 全局错误处理
         window.addEventListener('error', function(event) {
             console.error('全局错误:', event.error);
         });
