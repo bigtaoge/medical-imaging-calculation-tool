@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>影像学术研究计算工具 v4.1 - 完整功能增强版</title>
+    <title>影像学术研究计算工具 v4.2 - 混合版本</title>
     <style>
         :root {
             --primary: #4f46e5;
@@ -115,7 +115,6 @@
             display: inline-block;
         }
 
-        /* 电子钟样式 */
         .clock-container {
             background: linear-gradient(145deg, #ffffff, #f8f9fa);
             border: 2px solid transparent;
@@ -857,12 +856,11 @@
                 <span id="theme-text">夜间模式</span>
             </div>
             <h1>影像学术研究计算工具</h1>
-            <div class="subtitle">CTA造影剂用量计算 + 过敏风险评估 + 多专科评估 v4.1</div>
+            <div class="subtitle">CTA造影剂用量计算 + 过敏风险评估 + 多专科评估 v4.2</div>
             <div class="developer-info">
-                💻 程序开发者：影像涛哥
+                💻 程序开发者:影像涛哥 | 混合版本
             </div>
             
-            <!-- 电子钟 -->
             <div class="clock-container">
                 <div class="digits-container">
                     <div class="digit-group">
@@ -936,7 +934,6 @@
             </div>
         </div>
         
-        <!-- 患者分类选择器 -->
         <div class="patient-category-selector">
             <div class="category-title">选择评估类型 - 五大专业评估系统</div>
             <div class="category-grid">
@@ -1000,26 +997,26 @@
                     正常患者 - 基础参数设置
                 </h2>
                 <div class="info-box normal">
-                    <strong>✅ 正常患者计算流程：</strong><br>
-                    • 肾功能正常，无需eGFR评估<br>
+                    <strong>✅ 正常患者计算流程:</strong><br>
+                    • 肾功能正常,无需eGFR评估<br>
                     • 无二甲双胍用药风险<br>
                     • 按标准公式计算造影剂用量<br>
-                    • 安全限制：冠脉CTA ≤60ml，胸痛三联 ≤75ml
+                    • 安全限制:冠脉CTA ≤60ml,胸痛三联 ≤75ml
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="normalHeight">身高 (cm) <span class="required">*</span></label>
-                        <input type="number" id="normalHeight" placeholder="请输入身高，如：170" min="100" max="250" step="0.1" required>
+                        <input type="number" id="normalHeight" placeholder="请输入身高,如:170" min="100" max="250" step="0.1" required>
                         <span class="real-time-validation" id="normalHeight-validation"></span>
-                        <div class="input-hint">范围：100-250cm</div>
+                        <div class="input-hint">范围:100-250cm</div>
                         <div class="error-message" id="normalHeight-error">身高必须在100-250cm之间</div>
                     </div>
                     <div class="form-group">
                         <label for="normalWeight">体重 (kg) <span class="required">*</span></label>
-                        <input type="number" id="normalWeight" placeholder="请输入体重，如：70" min="20" max="200" step="0.1" required>
+                        <input type="number" id="normalWeight" placeholder="请输入体重,如:70" min="20" max="200" step="0.1" required>
                         <span class="real-time-validation" id="normalWeight-validation"></span>
-                        <div class="input-hint">范围：20-200kg</div>
+                        <div class="input-hint">范围:20-200kg</div>
                         <div class="error-message" id="normalWeight-error">体重必须在20-200kg之间</div>
                     </div>
                 </div>
@@ -1051,15 +1048,15 @@
                     肾功能异常患者 - 基础参数设置
                 </h2>
                 <div class="info-box renal">
-                    <strong>⚠️ 肾功能异常患者特殊处理：</strong><br>
-                    • 需要评估eGFR（2021版CKD-EPI公式）<br>
+                    <strong>⚠️ 肾功能异常患者特殊处理:</strong><br>
+                    • 需要评估eGFR(2021版CKD-EPI公式)<br>
                     • 根据肾功能分级调整造影剂用量<br>
                     • eGFR <45 ml/min/1.73m² 时减量至80%<br>
                     • 必须进行充分水化治疗
                 </div>
 
                 <div class="info-box normal">
-                    <strong>📊 肾功能异常患者分级标准（基于eGFR）：</strong><br>
+                    <strong>📊 肾功能异常患者分级标准(基于eGFR):</strong><br>
                     <table class="grading-table">
                         <thead>
                             <tr>
@@ -1096,22 +1093,22 @@
                             </tr>
                         </tbody>
                     </table>
-                    <strong>评估流程：</strong>血肌酐 → 2021 CKD-EPI → eGFR分级 → 造影剂调整
+                    <strong>评估流程:</strong>血肌酐 → 2021 CKD-EPI → eGFR分级 → 造影剂调整
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="renalHeight">身高 (cm) <span class="required">*</span></label>
-                        <input type="number" id="renalHeight" placeholder="请输入身高，如：170" min="100" max="250" step="0.1" required>
+                        <input type="number" id="renalHeight" placeholder="请输入身高,如:170" min="100" max="250" step="0.1" required>
                         <span class="real-time-validation" id="renalHeight-validation"></span>
-                        <div class="input-hint">范围：100-250cm</div>
+                        <div class="input-hint">范围:100-250cm</div>
                         <div class="error-message" id="renalHeight-error">身高必须在100-250cm之间</div>
                     </div>
                     <div class="form-group">
                         <label for="renalWeight">体重 (kg) <span class="required">*</span></label>
-                        <input type="number" id="renalWeight" placeholder="请输入体重，如：70" min="20" max="200" step="0.1" required>
+                        <input type="number" id="renalWeight" placeholder="请输入体重,如:70" min="20" max="200" step="0.1" required>
                         <span class="real-time-validation" id="renalWeight-validation"></span>
-                        <div class="input-hint">范围：20-200kg</div>
+                        <div class="input-hint">范围:20-200kg</div>
                         <div class="error-message" id="renalWeight-error">体重必须在20-200kg之间</div>
                     </div>
                 </div>
@@ -1119,17 +1116,17 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="renalCreatinine">血肌酐值 (μmol/L) <span class="required">*</span></label>
-                        <input type="number" id="renalCreatinine" placeholder="请输入血肌酐值，如：120" min="30" max="500" step="1" required>
+                        <input type="number" id="renalCreatinine" placeholder="请输入血肌酐值,如:120" min="30" max="500" step="1" required>
                         <span class="real-time-validation" id="renalCreatinine-validation"></span>
-                        <div class="input-hint">范围：30-500 μmol/L，用于计算eGFR</div>
+                        <div class="input-hint">范围:30-500 μmol/L,用于计算eGFR</div>
                         <div class="error-message" id="renalCreatinine-error">血肌酐值必须在30-500 μmol/L之间</div>
                         <div class="formula-display" id="renalFormulaDisplay" style="display: none;"></div>
                     </div>
                     <div class="form-group">
                         <label for="renalAge">年龄 (岁) <span class="required">*</span></label>
-                        <input type="number" id="renalAge" placeholder="请输入年龄，如：65" min="18" max="120" step="1" required>
+                        <input type="number" id="renalAge" placeholder="请输入年龄,如:65" min="18" max="120" step="1" required>
                         <span class="real-time-validation" id="renalAge-validation"></span>
-                        <div class="input-hint">范围：18-120岁</div>
+                        <div class="input-hint">范围:18-120岁</div>
                         <div class="error-message" id="renalAge-error">年龄必须在18-120岁之间</div>
                     </div>
                 </div>
@@ -1171,7 +1168,7 @@
                     二甲双胍用药患者 - 基础参数设置
                 </h2>
                 <div class="info-box metformin">
-                    <strong>🚨 二甲双胍患者风险提示：</strong><br>
+                    <strong>🚨 二甲双胍患者风险提示:</strong><br>
                     • 造影剂可能增加乳酸酸中毒风险<br>
                     • 需要详细评估肾功能(eGFR)<br>
                     • 造影前后48-72小时暂停用药<br>
@@ -1179,7 +1176,7 @@
                 </div>
 
                 <div class="info-box normal">
-                    <strong>💊 二甲双胍患者风险分组标准：</strong><br>
+                    <strong>💊 二甲双胍患者风险分组标准:</strong><br>
                     <table class="grading-table">
                         <thead>
                             <tr>
@@ -1216,23 +1213,23 @@
                             </tr>
                         </tbody>
                     </table>
-                    <strong>评分细则：</strong>eGFR(≥60=1分，45-59=2分，30-44=3分，<30=4分) + 年龄(65-74=0.5分，≥75=1分) + 剂量(1500-1999mg=0.5分，≥2000mg=1分)<br>
-                    <strong>评估要素：</strong>肾功能 + 年龄 + 剂量 → 乳酸酸中毒风险评估
+                    <strong>评分细则:</strong>eGFR(≥60=1分,45-59=2分,30-44=3分,<30=4分) + 年龄(65-74=0.5分,≥75=1分) + 剂量(1500-1999mg=0.5分,≥2000mg=1分)<br>
+                    <strong>评估要素:</strong>肾功能 + 年龄 + 剂量 → 乳酸酸中毒风险评估
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="metforminHeight">身高 (cm) <span class="required">*</span></label>
-                        <input type="number" id="metforminHeight" placeholder="请输入身高，如：170" min="100" max="250" step="0.1" required>
+                        <input type="number" id="metforminHeight" placeholder="请输入身高,如:170" min="100" max="250" step="0.1" required>
                         <span class="real-time-validation" id="metforminHeight-validation"></span>
-                        <div class="input-hint">范围：100-250cm</div>
+                        <div class="input-hint">范围:100-250cm</div>
                         <div class="error-message" id="metforminHeight-error">身高必须在100-250cm之间</div>
                     </div>
                     <div class="form-group">
                         <label for="metforminWeight">体重 (kg) <span class="required">*</span></label>
-                        <input type="number" id="metforminWeight" placeholder="请输入体重，如：70" min="20" max="200" step="0.1" required>
+                        <input type="number" id="metforminWeight" placeholder="请输入体重,如:70" min="20" max="200" step="0.1" required>
                         <span class="real-time-validation" id="metforminWeight-validation"></span>
-                        <div class="input-hint">范围：20-200kg</div>
+                        <div class="input-hint">范围:20-200kg</div>
                         <div class="error-message" id="metforminWeight-error">体重必须在20-200kg之间</div>
                     </div>
                 </div>
@@ -1240,17 +1237,17 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="metforminCreatinine">血肌酐值 (μmol/L) <span class="required">*</span></label>
-                        <input type="number" id="metforminCreatinine" placeholder="请输入血肌酐值，如：80" min="30" max="500" step="1" required>
+                        <input type="number" id="metforminCreatinine" placeholder="请输入血肌酐值,如:80" min="30" max="500" step="1" required>
                         <span class="real-time-validation" id="metforminCreatinine-validation"></span>
-                        <div class="input-hint">范围：30-500 μmol/L，用于风险评估</div>
+                        <div class="input-hint">范围:30-500 μmol/L,用于风险评估</div>
                         <div class="error-message" id="metforminCreatinine-error">血肌酐值必须在30-500 μmol/L之间</div>
                         <div class="formula-display" id="metforminFormulaDisplay" style="display: none;"></div>
                     </div>
                     <div class="form-group">
                         <label for="metforminAge">年龄 (岁) <span class="required">*</span></label>
-                        <input type="number" id="metforminAge" placeholder="请输入年龄，如：60" min="18" max="120" step="1" required>
+                        <input type="number" id="metforminAge" placeholder="请输入年龄,如:60" min="18" max="120" step="1" required>
                         <span class="real-time-validation" id="metforminAge-validation"></span>
-                        <div class="input-hint">范围：18-120岁</div>
+                        <div class="input-hint">范围:18-120岁</div>
                         <div class="error-message" id="metforminAge-error">年龄必须在18-120岁之间</div>
                     </div>
                 </div>
@@ -1264,7 +1261,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="metforminDose">二甲双胍剂量（mg/日）</label>
+                        <label for="metforminDose">二甲双胍剂量(mg/日)</label>
                         <select id="metforminDose">
                             <option value="500">500mg/日</option>
                             <option value="850">850mg/日</option>
@@ -1303,15 +1300,16 @@
                     心功能不全患者 - 基础参数设置
                 </h2>
                 <div class="info-box heart">
-                    <strong>💙 心功能不全患者特殊处理：</strong><br>
+                    <strong>💙 心功能不全患者特殊处理:</strong><br>
                     • 需要评估NYHA心功能分级<br>
                     • 根据射血分数(EF)调整造影剂用量<br>
-                    • 严格控制造影剂总量，避免容量负荷过重<br>
-                    • 监测BNP/NT-proBNP水平
+                    • 严格控制造影剂总量,避免容量负荷过重<br>
+                    • 监测BNP/NT-proBNP水平<br>
+                    • <strong>新增:如提供肌酐值,将评估心肾综合征风险</strong>
                 </div>
 
                 <div class="info-box normal">
-                    <strong>❤️ 心功能不全患者风险分级标准：</strong><br>
+                    <strong>❤️ 心功能不全患者风险分级标准:</strong><br>
                     <table class="grading-table">
                         <thead>
                             <tr>
@@ -1348,22 +1346,22 @@
                             </tr>
                         </tbody>
                     </table>
-                    <strong>评估要素：</strong>NYHA分级 + 射血分数 + BNP → 容量负荷风险评估
+                    <strong>评估要素:</strong>NYHA分级 + 射血分数 + BNP + <strong>肾功能</strong> → 容量负荷风险评估
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="heartHeight">身高 (cm) <span class="required">*</span></label>
-                        <input type="number" id="heartHeight" placeholder="请输入身高，如：170" min="100" max="250" step="0.1" required>
+                        <input type="number" id="heartHeight" placeholder="请输入身高,如:170" min="100" max="250" step="0.1" required>
                         <span class="real-time-validation" id="heartHeight-validation"></span>
-                        <div class="input-hint">范围：100-250cm</div>
+                        <div class="input-hint">范围:100-250cm</div>
                         <div class="error-message" id="heartHeight-error">身高必须在100-250cm之间</div>
                     </div>
                     <div class="form-group">
                         <label for="heartWeight">体重 (kg) <span class="required">*</span></label>
-                        <input type="number" id="heartWeight" placeholder="请输入体重，如：70" min="20" max="200" step="0.1" required>
+                        <input type="number" id="heartWeight" placeholder="请输入体重,如:70" min="20" max="200" step="0.1" required>
                         <span class="real-time-validation" id="heartWeight-validation"></span>
-                        <div class="input-hint">范围：20-200kg</div>
+                        <div class="input-hint">范围:20-200kg</div>
                         <div class="error-message" id="heartWeight-error">体重必须在20-200kg之间</div>
                     </div>
                 </div>
@@ -1381,9 +1379,9 @@
                     </div>
                     <div class="form-group">
                         <label for="heartEF">左室射血分数(EF) % <span class="required">*</span></label>
-                        <input type="number" id="heartEF" placeholder="请输入EF值，如：45" min="10" max="80" step="1" required>
+                        <input type="number" id="heartEF" placeholder="请输入EF值,如:45" min="10" max="80" step="1" required>
                         <span class="real-time-validation" id="heartEF-validation"></span>
-                        <div class="input-hint">范围：10-80%</div>
+                        <div class="input-hint">范围:10-80%</div>
                         <div class="error-message" id="heartEF-error">EF值必须在10-80%之间</div>
                     </div>
                 </div>
@@ -1393,17 +1391,35 @@
                         <label for="heartBNP">BNP/NT-proBNP水平</label>
                         <select id="heartBNP">
                             <option value="normal">正常范围</option>
-                            <option value="mild">轻度升高（1-2倍）</option>
-                            <option value="moderate">中度升高（2-5倍）</option>
-                            <option value="severe">重度升高（>5倍）</option>
+                            <option value="mild">轻度升高(1-2倍)</option>
+                            <option value="moderate">中度升高(2-5倍)</option>
+                            <option value="severe">重度升高(>5倍)</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="heartCreatinine">血肌酐值 (μmol/L)</label>
-                        <input type="number" id="heartCreatinine" placeholder="请输入血肌酐值" min="30" max="500" step="1">
+                        <label for="heartCreatinine">血肌酐值 (μmol/L) - 可选</label>
+                        <input type="number" id="heartCreatinine" placeholder="如有数据请输入" min="30" max="500" step="1">
                         <span class="real-time-validation" id="heartCreatinine-validation"></span>
-                        <div class="input-hint">可选填，用于评估心肾综合征</div>
+                        <div class="input-hint">可选填,用于评估心肾综合征及调整造影剂</div>
                         <div class="error-message" id="heartCreatinine-error">血肌酐值必须在30-500 μmol/L之间</div>
+                        <div class="formula-display" id="heartFormulaDisplay" style="display: none;"></div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="heartAge">年龄 (岁) - 用于eGFR计算</label>
+                        <input type="number" id="heartAge" placeholder="如有肌酐值需填写" min="18" max="120" step="1">
+                        <span class="real-time-validation" id="heartAge-validation"></span>
+                        <div class="input-hint">与肌酐值配合计算eGFR</div>
+                        <div class="error-message" id="heartAge-error">年龄必须在18-120岁之间</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="heartGender">性别 - 用于eGFR计算</label>
+                        <select id="heartGender" onchange="updateHeartFormulaDisplay()">
+                            <option value="male">男性</option>
+                            <option value="female">女性</option>
+                        </select>
                     </div>
                 </div>
                 
@@ -1434,15 +1450,15 @@
                     造影剂过敏风险评估 - 2024版标准
                 </h2>
                 <div class="info-box allergy">
-                    <strong>🔬 2024版造影剂过敏风险评估系统：</strong><br>
+                    <strong>🔬 2024版造影剂过敏风险评估系统:</strong><br>
                     • 基于多因素评分模型进行风险分层<br>
-                    • 主要风险因素（3分）、次要风险因素（2分）、轻微风险因素（1分）<br>
-                    • 总分≥6分为极高风险，4-5分为高风险，2-3分为中等风险<br>
+                    • 主要风险因素(3分)、次要风险因素(2分)、轻微风险因素(1分)<br>
+                    • 总分≥6分为极高风险,4-5分为高风险,2-3分为中等风险<br>
                     • 提供个性化预处理方案和监护建议
                 </div>
 
                 <div class="info-box normal">
-                    <strong>📊 风险评估分级标准：</strong><br>
+                    <strong>📊 风险评估分级标准:</strong><br>
                     <table class="grading-table">
                         <thead>
                             <tr>
@@ -1492,22 +1508,22 @@
                     <h3 style="color: var(--allergy-color); margin-bottom: 15px;">A. 造影剂使用史评估</h3>
                     
                     <div class="form-group">
-                        <label>1. 是否曾经使用过造影剂？</label>
+                        <label>1. 是否曾经使用过造影剂? <span class="required">*</span></label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
                                 <input type="radio" name="previousContrast" value="no" id="prevContrast-no">
-                                <label for="prevContrast-no">否，从未使用过</label>
+                                <label for="prevContrast-no">否,从未使用过</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="radio" name="previousContrast" value="yes" id="prevContrast-yes">
-                                <label for="prevContrast-yes">是，曾经使用过</label>
+                                <label for="prevContrast-yes">是,曾经使用过</label>
                             </div>
                         </div>
                     </div>
 
                     <div id="contrastHistoryDetails" style="display: none;">
                         <div class="form-group">
-                            <label>2. 上次使用造影剂时的反应情况？</label>
+                            <label>2. 上次使用造影剂时的反应情况? <span class="required">*</span></label>
                             <div class="checkbox-group">
                                 <div class="checkbox-item">
                                     <input type="radio" name="previousReaction" value="none" id="reaction-none">
@@ -1515,21 +1531,21 @@
                                 </div>
                                 <div class="checkbox-item">
                                     <input type="radio" name="previousReaction" value="mild" id="reaction-mild">
-                                    <label for="reaction-mild">轻微反应（+1分）</label>
+                                    <label for="reaction-mild">轻微反应(+1分)</label>
                                 </div>
                                 <div class="checkbox-item">
                                     <input type="radio" name="previousReaction" value="moderate" id="reaction-moderate">
-                                    <label for="reaction-moderate">中度反应（+3分）</label>
+                                    <label for="reaction-moderate">中度反应(+3分)</label>
                                 </div>
                                 <div class="checkbox-item">
                                     <input type="radio" name="previousReaction" value="severe" id="reaction-severe">
-                                    <label for="reaction-severe">严重反应（+3分）</label>
+                                    <label for="reaction-severe">严重反应(+3分)</label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label>3. 具体反应症状（可多选）：</label>
+                            <label>3. 具体反应症状(可多选):</label>
                             <div class="checkbox-group">
                                 <div class="checkbox-item">
                                     <input type="checkbox" id="symptom-rash">
@@ -1573,71 +1589,71 @@
                     <h3 style="color: var(--allergy-color); margin-bottom: 15px;">B. 过敏史评估</h3>
                     
                     <div class="form-group">
-                        <label>1. 药物过敏史（可多选）：</label>
-                        <div class="checkbox-group">
+                        <label>1. 药物过敏史(可多选):</label>
+                        <div class="checkbox-group" id="drugAllergyGroup">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="drug-none">
+                                <input type="checkbox" id="drug-none" data-group="drug">
                                 <label for="drug-none">无药物过敏史</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="drug-penicillin">
+                                <input type="checkbox" id="drug-penicillin" data-group="drug">
                                 <label for="drug-penicillin">青霉素类</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="drug-cephalosporin">
+                                <input type="checkbox" id="drug-cephalosporin" data-group="drug">
                                 <label for="drug-cephalosporin">头孢类</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="drug-sulfa">
+                                <input type="checkbox" id="drug-sulfa" data-group="drug">
                                 <label for="drug-sulfa">磺胺类</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="drug-aspirin">
+                                <input type="checkbox" id="drug-aspirin" data-group="drug">
                                 <label for="drug-aspirin">阿司匹林</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="drug-multiple">
-                                <label for="drug-multiple">≥3种不相关药物（+2分）</label>
+                                <input type="checkbox" id="drug-multiple" data-group="drug">
+                                <label for="drug-multiple">≥3种不相关药物(+2分)</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="drug-severe-allergy">
-                                <label for="drug-severe-allergy">严重过敏反应史（+3分）</label>
+                                <input type="checkbox" id="drug-severe-allergy" data-group="drug">
+                                <label for="drug-severe-allergy">严重过敏反应史(+3分)</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>2. 食物过敏史（可多选）：</label>
-                        <div class="checkbox-group">
+                        <label>2. 食物过敏史(可多选):</label>
+                        <div class="checkbox-group" id="foodAllergyGroup">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="food-none">
+                                <input type="checkbox" id="food-none" data-group="food">
                                 <label for="food-none">无食物过敏史</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="food-seafood">
-                                <label for="food-seafood">海鲜类（+1分）</label>
+                                <input type="checkbox" id="food-seafood" data-group="food">
+                                <label for="food-seafood">海鲜类(+1分)</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="food-nuts">
-                                <label for="food-nuts">坚果类（+1分）</label>
+                                <input type="checkbox" id="food-nuts" data-group="food">
+                                <label for="food-nuts">坚果类(+1分)</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="food-milk">
+                                <input type="checkbox" id="food-milk" data-group="food">
                                 <label for="food-milk">牛奶蛋白</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="food-egg">
+                                <input type="checkbox" id="food-egg" data-group="food">
                                 <label for="food-egg">鸡蛋</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="food-others">
+                                <input type="checkbox" id="food-others" data-group="food">
                                 <label for="food-others">其他食物</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>3. 哮喘评估：</label>
+                        <label>3. 哮喘评估:</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
                                 <input type="radio" name="asthma" value="none" id="asthma-none">
@@ -1645,29 +1661,29 @@
                             </div>
                             <div class="checkbox-item">
                                 <input type="radio" name="asthma" value="mild" id="asthma-mild">
-                                <label for="asthma-mild">轻度哮喘（+1分）</label>
+                                <label for="asthma-mild">轻度哮喘(+1分)</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="radio" name="asthma" value="severe" id="asthma-severe">
-                                <label for="asthma-severe">重度哮喘（+2分）</label>
+                                <label for="asthma-severe">重度哮喘(+2分)</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="radio" name="asthma" value="allergic" id="asthma-allergic">
-                                <label for="asthma-allergic">哮喘伴过敏史（+3分）</label>
+                                <label for="asthma-allergic">哮喘伴过敏史(+3分)</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>4. 其他过敏性疾病（可多选）：</label>
+                        <label>4. 其他过敏性疾病(可多选):</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
                                 <input type="checkbox" id="other-rhinitis">
-                                <label for="other-rhinitis">过敏性鼻炎（+1分）</label>
+                                <label for="other-rhinitis">过敏性鼻炎(+1分)</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="other-eczema">
-                                <label for="other-eczema">湿疹/特应性皮炎（+1分）</label>
+                                <label for="other-eczema">湿疹/特应性皮炎(+1分)</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="other-urticaria">
@@ -1686,11 +1702,11 @@
                     <h3 style="color: var(--allergy-color); margin-bottom: 15px;">C. 特殊情况评估</h3>
                     
                     <div class="form-group">
-                        <label>1. 特殊疾病史（可多选）：</label>
+                        <label>1. 特殊疾病史(可多选):</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
                                 <input type="checkbox" id="special-mastocytosis">
-                                <label for="special-mastocytosis">肥大细胞增多症（+2分）</label>
+                                <label for="special-mastocytosis">肥大细胞增多症(+2分)</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="special-heart">
@@ -1704,7 +1720,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>2. 当前用药情况（可多选）：</label>
+                        <label>2. 当前用药情况(可多选):</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
                                 <input type="checkbox" id="med-beta-blocker">
@@ -1726,7 +1742,6 @@
                     </div>
                 </div>
 
-                <!-- 风险评分显示 -->
                 <div class="risk-score-display" id="allergyRiskScore" style="display: none;">
                     <div class="score-value" id="riskScoreValue">0</div>
                     <div id="riskLevelText">风险等级评估中...</div>
@@ -1734,7 +1749,6 @@
             </div>
         </div>
 
-        <!-- 通用操作区域 -->
         <div class="form-container show" id="actionForm">
             <div class="form-section">
                 <div class="progress-bar">
@@ -1764,21 +1778,21 @@
 
         <div class="disclaimer">
             <h3>⚠️ 重要使用声明</h3>
-            <p><span class="highlight">专业背景要求：</span>使用者须是在医学影像科工作的专业人员，熟悉CT检查流程和造影剂使用规范。</p>
-            <p><span class="highlight">设备依据：</span>本工具计算公式基于联影CT960+设备的技术参数和临床研究数据。</p>
-            <p><span class="highlight">学术用途：</span>仅供影像技术教学、学术研究使用，严禁用于临床诊断或治疗决策。</p>
-            <p><span class="highlight">五大评估系统：</span>正常患者标准计算、肾功能异常患者eGFR评估、二甲双胍患者风险评估、心功能不全患者NYHA分级评估、造影剂过敏风险评估。</p>
-            <p><span class="highlight">过敏评估系统：</span>基于2024版国际指南，但不能100%预测过敏反应，临床使用时必须配备完善的抢救措施。</p>
-            <p><span class="highlight">eGFR计算：</span>采用2021版CKD-EPI公式（无种族系数），适用于中国人群。</p>
-            <p><span class="highlight">安全限制：</span>程序已设置造影剂用量和注射流速的安全上限，但实际使用需结合患者具体情况充分评估。</p>
+            <p><span class="highlight">专业背景要求:</span>使用者须是在医学影像科工作的专业人员,熟悉CT检查流程和造影剂使用规范。</p>
+            <p><span class="highlight">设备依据:</span>本工具计算公式基于联影CT960+设备的技术参数和临床研究数据。</p>
+            <p><span class="highlight">学术用途:</span>仅供影像技术教学、学术研究使用,严禁用于临床诊断或治疗决策。</p>
+            <p><span class="highlight">五大评估系统:</span>正常患者标准计算、肾功能异常患者eGFR评估、二甲双胍患者风险评估、心功能不全患者NYHA分级评估、造影剂过敏风险评估。</p>
+            <p><span class="highlight">过敏评估系统:</span>基于2024版国际指南,但不能100%预测过敏反应,临床使用时必须配备完善的抢救措施。</p>
+            <p><span class="highlight">eGFR计算:</span>采用2021版CKD-EPI公式(无种族系数),适用于中国人群。</p>
+            <p><span class="highlight">安全限制:</span>程序已设置造影剂用量和注射流速的安全上限,但实际使用需结合患者具体情况充分评估。</p>
+            <p><span class="highlight">v4.2混合版更新:</span>前四类患者使用详细PDF格式,过敏评估使用专门PDF格式,优化用户体验。</p>
             <p style="margin-top: 15px; font-weight: 700; color: #b45309; border-top: 1px solid #fed7aa; padding-top: 15px;">
-                开发者不承担任何直接或间接的法律责任；使用即表示同意本声明。程序使用过程中如遇到问题及反馈，请联系邮箱：lucky@taothink.com
+                开发者不承担任何直接或间接的法律责任;使用即表示同意本声明。程序使用过程中如遇到问题及反馈,请联系邮箱:lucky@taothink.com
             </p>
         </div>
     </div>
 
     <script>
-        // 7段数码管数字配置（a-g段）
         const digitConfig = {
             '0': [1, 1, 1, 1, 1, 1, 0],
             '1': [0, 1, 1, 0, 0, 0, 0],
@@ -1792,7 +1806,6 @@
             '9': [1, 1, 1, 1, 0, 1, 1]
         };
 
-        // 全局状态管理
         const appState = {
             isDarkMode: false,
             currentPatientType: null,
@@ -1800,7 +1813,6 @@
             allergyRiskScore: 0
         };
 
-        // 电子钟相关函数
         function updateClock() {
             const now = new Date();
             const hours = now.getHours();
@@ -1944,10 +1956,9 @@
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
-            showNotification('✅ 表单已重置，请重新选择评估类型', 'success');
+            showNotification('✅ 表单已重置,请重新选择评估类型', 'success');
         }
 
-        // 2021年CKD-EPI eGFR计算函数
         function calculateEGFR_2021_Corrected(creatinine_umol, age, gender) {
             let eGFR;
             
@@ -1968,22 +1979,21 @@
             return Math.round(eGFR);
         }
 
-        // 生成简化的eGFR计算过程
         function generateSimplifiedEGFRCalculation(creatinine_umol, age, gender) {
             let formula = '';
             let result = '';
             
             if (gender === 'female') {
                 if (creatinine_umol <= 62) {
-                    formula = `女性，Scr ≤ 62 μmol/L：eGFR = 142 × (${creatinine_umol}/62)^(-0.241) × 0.9938^${age} × 1.012`;
+                    formula = `女性,Scr ≤ 62 μmol/L:eGFR = 142 × (${creatinine_umol}/62)^(-0.241) × 0.9938^${age} × 1.012`;
                 } else {
-                    formula = `女性，Scr > 62 μmol/L：eGFR = 142 × (${creatinine_umol}/62)^(-1.2) × 0.9938^${age} × 1.012`;
+                    formula = `女性,Scr > 62 μmol/L:eGFR = 142 × (${creatinine_umol}/62)^(-1.2) × 0.9938^${age} × 1.012`;
                 }
             } else {
                 if (creatinine_umol <= 80) {
-                    formula = `男性，Scr ≤ 80 μmol/L：eGFR = 142 × (${creatinine_umol}/80)^(-0.302) × 0.9938^${age}`;
+                    formula = `男性,Scr ≤ 80 μmol/L:eGFR = 142 × (${creatinine_umol}/80)^(-0.302) × 0.9938^${age}`;
                 } else {
-                    formula = `男性，Scr > 80 μmol/L：eGFR = 142 × (${creatinine_umol}/80)^(-1.2) × 0.9938^${age}`;
+                    formula = `男性,Scr > 80 μmol/L:eGFR = 142 × (${creatinine_umol}/80)^(-1.2) × 0.9938^${age}`;
                 }
             }
             
@@ -2004,6 +2014,39 @@
             updateFormulaDisplay('metformin');
         }
 
+        function updateHeartFormulaDisplay() {
+            const creatinine = parseFloat(document.getElementById('heartCreatinine').value);
+            const age = parseFloat(document.getElementById('heartAge').value);
+            const gender = document.getElementById('heartGender').value;
+            const formulaDisplay = document.getElementById('heartFormulaDisplay');
+            
+            if (!creatinine || creatinine < 30 || creatinine > 500 || !age) {
+                formulaDisplay.style.display = 'none';
+                return;
+            }
+            
+            let formulaText = '';
+            if (gender === 'female') {
+                if (creatinine <= 62) {
+                    formulaText = `女性,Scr ≤ 62 μmol/L:eGFR = 142 × (${creatinine}/62)^(-0.241) × 0.9938^${age} × 1.012`;
+                } else {
+                    formulaText = `女性,Scr > 62 μmol/L:eGFR = 142 × (${creatinine}/62)^(-1.2) × 0.9938^${age} × 1.012`;
+                }
+            } else {
+                if (creatinine <= 80) {
+                    formulaText = `男性,Scr ≤ 80 μmol/L:eGFR = 142 × (${creatinine}/80)^(-0.302) × 0.9938^${age}`;
+                } else {
+                    formulaText = `男性,Scr > 80 μmol/L:eGFR = 142 × (${creatinine}/80)^(-1.2) × 0.9938^${age}`;
+                }
+            }
+            
+            const eGFR = calculateEGFR_2021_Corrected(creatinine, age, gender);
+            formulaText += ` = ${eGFR} ml/min/1.73m²`;
+            
+            formulaDisplay.innerHTML = formulaText;
+            formulaDisplay.style.display = 'block';
+        }
+
         function updateFormulaDisplay(type) {
             const gender = document.getElementById(`${type}Gender`).value;
             const creatinine = parseFloat(document.getElementById(`${type}Creatinine`).value);
@@ -2017,15 +2060,15 @@
             let formulaText = '';
             if (gender === 'female') {
                 if (creatinine <= 62) {
-                    formulaText = `女性，Scr ≤ 62 μmol/L：eGFR = 142 × (${creatinine}/62)^(-0.241) × 0.9938^年龄 × 1.012`;
+                    formulaText = `女性,Scr ≤ 62 μmol/L:eGFR = 142 × (${creatinine}/62)^(-0.241) × 0.9938^年龄 × 1.012`;
                 } else {
-                    formulaText = `女性，Scr > 62 μmol/L：eGFR = 142 × (${creatinine}/62)^(-1.2) × 0.9938^年龄 × 1.012`;
+                    formulaText = `女性,Scr > 62 μmol/L:eGFR = 142 × (${creatinine}/62)^(-1.2) × 0.9938^年龄 × 1.012`;
                 }
             } else {
                 if (creatinine <= 80) {
-                    formulaText = `男性，Scr ≤ 80 μmol/L：eGFR = 142 × (${creatinine}/80)^(-0.302) × 0.9938^年龄`;
+                    formulaText = `男性,Scr ≤ 80 μmol/L:eGFR = 142 × (${creatinine}/80)^(-0.302) × 0.9938^年龄`;
                 } else {
-                    formulaText = `男性，Scr > 80 μmol/L：eGFR = 142 × (${creatinine}/80)^(-1.2) × 0.9938^年龄`;
+                    formulaText = `男性,Scr > 80 μmol/L:eGFR = 142 × (${creatinine}/80)^(-1.2) × 0.9938^年龄`;
                 }
             }
             
@@ -2033,7 +2076,7 @@
             formulaDisplay.style.display = 'block';
         }
 
-        function assessHeartFailureRisk(nyha, ef, bnp) {
+        function assessHeartFailureRisk(nyha, ef, bnp, eGFR = null) {
             let riskLevel = 'low';
             let recommendations = [];
             let clinicalAction = '';
@@ -2045,7 +2088,7 @@
                 riskLevel = 'low';
                 clinicalAction = '低风险处理';
                 recommendations = [
-                    '心功能尚可，按标准流程检查',
+                    '心功能尚可,按标准流程检查',
                     '适当控制造影剂用量',
                     '监测血流动力学变化',
                     '检查后观察2小时'
@@ -2054,7 +2097,7 @@
                 riskLevel = 'moderate';
                 clinicalAction = '中度风险监测';
                 recommendations = [
-                    '轻度心功能不全，需谨慎评估',
+                    '轻度心功能不全,需谨慎评估',
                     '造影剂用量减至标准用量的85%',
                     '控制注射流速≤4.5ml/s',
                     '密切关注有无过敏反应',
@@ -2065,10 +2108,10 @@
                 riskLevel = 'high';
                 clinicalAction = '高风险处理';
                 recommendations = [
-                    '明显心功能不全，高风险',
+                    '明显心功能不全,高风险',
                     '造影剂用量减至标准用量的70%',
                     '严格控制注射流速≤4.0ml/s',
-                    '分次注射，避免短时间大量负荷',
+                    '分次注射,避免短时间大量负荷',
                     '检查前优化心功能治疗',
                     '心内科会诊评估',
                     '准备急救药物和设备'
@@ -2077,30 +2120,43 @@
                 riskLevel = 'very-high';
                 clinicalAction = '极高风险 - 慎重考虑';
                 recommendations = [
-                    '严重心功能不全，极高风险',
+                    '严重心功能不全,极高风险',
                     '强烈建议避免或推迟检查',
-                    '如必须检查，需CCU监护条件',
-                    '造影剂用量减至最低（≤50ml）',
+                    '如必须检查,需CCU监护条件',
+                    '造影剂用量减至最低(≤50ml)',
                     '考虑替代检查方法',
                     '必须心内科团队在场'
                 ];
             }
             
+            if (eGFR !== null && eGFR < 60) {
+                if (eGFR < 30) {
+                    riskLevel = 'very-high';
+                    recommendations.unshift('⚠️ 严重心肾综合征风险,eGFR<30,强烈建议避免造影剂');
+                } else if (eGFR < 45) {
+                    if (riskLevel === 'low') riskLevel = 'moderate';
+                    else if (riskLevel === 'moderate') riskLevel = 'high';
+                    recommendations.unshift('⚠️ 心肾综合征风险,需双重考虑,造影剂再减量20%');
+                } else {
+                    recommendations.unshift('⚠️ 轻度肾功能不全,注意心肾综合征风险');
+                }
+            }
+            
             if (bnp === 'severe') {
                 riskLevel = riskLevel === 'low' ? 'moderate' : 
                            riskLevel === 'moderate' ? 'high' : 'very-high';
-                recommendations.unshift('BNP严重升高，提示心功能失代偿风险');
+                recommendations.unshift('BNP严重升高,提示心功能失代偿风险');
             }
             
             return { 
                 riskLevel, 
                 recommendations, 
                 clinicalAction,
-                riskScore: calculateHeartRiskScore(nyhaValue, efValue, bnp)
+                riskScore: calculateHeartRiskScore(nyhaValue, efValue, bnp, eGFR)
             };
         }
 
-        function calculateHeartRiskScore(nyha, ef, bnp) {
+        function calculateHeartRiskScore(nyha, ef, bnp, eGFR = null) {
             let score = 0;
             score += nyha;
             
@@ -2116,6 +2172,12 @@
                 case 'severe': score += 3; break;
             }
             
+            if (eGFR !== null) {
+                if (eGFR < 30) score += 3;
+                else if (eGFR < 45) score += 2;
+                else if (eGFR < 60) score += 1;
+            }
+            
             return score;
         }
 
@@ -2128,27 +2190,27 @@
                 riskLevel = 'low';
                 clinicalAction = '标准处理';
                 recommendations = [
-                    '肾功能正常，造影前后暂停二甲双胍48小时',
-                    '造影后监测肾功能，无异常可恢复用药',
+                    '肾功能正常,造影前后暂停二甲双胍48小时',
+                    '造影后监测肾功能,无异常可恢复用药',
                     '建议造影前后充分水化'
                 ];
             } else if (eGFR >= 45) {
                 riskLevel = 'moderate';
                 clinicalAction = '谨慎监测';
                 recommendations = [
-                    '轻度肾功能不全，需谨慎评估',
+                    '轻度肾功能不全,需谨慎评估',
                     '造影前后暂停二甲双胍48-72小时',
                     '造影后48-72小时复查肾功能',
-                    '建议静脉水化：0.9% NaCl 1ml/kg/h，检查前6-12h开始'
+                    '建议静脉水化:0.9% NaCl 1ml/kg/h,检查前6-12h开始'
                 ];
             } else if (eGFR >= 30) {
                 riskLevel = 'high';
                 clinicalAction = '高风险处理';
                 recommendations = [
-                    '中度肾功能不全，高风险',
+                    '中度肾功能不全,高风险',
                     '造影前后暂停二甲双胍72小时',
                     '考虑减少造影剂用量至标准用量的80%',
-                    '必须静脉水化：0.9% NaCl 1ml/kg/h × 12h',
+                    '必须静脉水化:0.9% NaCl 1ml/kg/h × 12h',
                     '密切关注有无过敏反应',
                     '造影后72小时内密切监测肾功能'
                 ];
@@ -2156,16 +2218,16 @@
                 riskLevel = 'very-high';
                 clinicalAction = '极高风险 - 避免检查';
                 recommendations = [
-                    '重度肾功能不全，极高风险',
+                    '重度肾功能不全,极高风险',
                     '强烈建议避免使用造影剂',
-                    '如必须检查，需内分泌科和肾内科会诊',
-                    '考虑替代检查方法（MRI、超声等）',
-                    '如无法避免，需透析准备'
+                    '如必须检查,需内分泌科和肾内科会诊',
+                    '考虑替代检查方法(MRI、超声等)',
+                    '如无法避免,需透析准备'
                 ];
             }
 
             if (age >= 75 && eGFR < 60) {
-                recommendations.unshift('高龄患者，增加监测频次');
+                recommendations.unshift('高龄患者,增加监测频次');
             }
             
             return { 
@@ -2194,11 +2256,9 @@
             return score;
         }
 
-        // 造影剂过敏风险评估
         function calculateAllergyRiskScore() {
             let score = 0;
             
-            // 既往造影剂反应评估
             const previousReaction = document.querySelector('input[name="previousReaction"]:checked');
             if (previousReaction) {
                 switch(previousReaction.value) {
@@ -2208,17 +2268,12 @@
                 }
             }
             
-            // 多种药物过敏
             if (document.getElementById('drug-multiple')?.checked) score += 2;
-            
-            // 严重过敏反应史
             if (document.getElementById('drug-severe-allergy')?.checked) score += 3;
             
-            // 食物过敏
             if (document.getElementById('food-seafood')?.checked || 
                 document.getElementById('food-nuts')?.checked) score += 1;
             
-            // 哮喘评估
             const asthma = document.querySelector('input[name="asthma"]:checked');
             if (asthma) {
                 switch(asthma.value) {
@@ -2228,11 +2283,8 @@
                 }
             }
             
-            // 其他过敏性疾病
             if (document.getElementById('other-rhinitis')?.checked) score += 1;
             if (document.getElementById('other-eczema')?.checked) score += 1;
-            
-            // 特殊疾病
             if (document.getElementById('special-mastocytosis')?.checked) score += 2;
             
             return score;
@@ -2247,7 +2299,7 @@
                 riskColor = 'score-minimal';
                 reactionRate = '0.1-0.5%';
                 strategy = '标准监测';
-                premedication = '无需预处理，常规监测即可';
+                premedication = '无需预处理,常规监测即可';
             } else if (score === 1) {
                 riskLevel = 'low';
                 riskText = '低风险';
@@ -2261,26 +2313,21 @@
                 riskColor = 'score-moderate';
                 reactionRate = '2-5%';
                 strategy = '标准预处理方案';
-                premedication = `检查前13小时：强的松50mg口服
-检查前1小时：苯海拉明50mg肌注或口服`;
+                premedication = `检查前13小时:强的松50mg口服\n检查前1小时:苯海拉明50mg肌注或口服`;
             } else if (score >= 4 && score <= 5) {
                 riskLevel = 'high';
                 riskText = '高风险';
                 riskColor = 'score-high';
                 reactionRate = '5-10%';
                 strategy = '强化预处理+专科评估';
-                premedication = `检查前13小时和7小时：甲泼尼龙40mg IV
-检查前1小时：苯海拉明50mg IV + 雷尼替丁50mg IV
-建议过敏科会诊评估`;
+                premedication = `检查前13小时和7小时:甲泼尼龙40mg IV\n检查前1小时:苯海拉明50mg IV + 雷尼替丁50mg IV\n建议过敏科会诊评估`;
             } else {
                 riskLevel = 'very-high';
                 riskText = '极高风险';
                 riskColor = 'score-very-high';
                 reactionRate = '10-30%';
                 strategy = '避免使用或过敏科会诊';
-                premedication = `强烈建议避免造影剂检查
-如必须检查：过敏科会诊，ICU监护条件下进行
-紧急预处理：检查前4-6小时，甲泼尼龙40mg IV，每4小时一次，共3次`;
+                premedication = `强烈建议避免造影剂检查\n如必须检查:过敏科会诊,ICU监护条件下进行\n紧急预处理:检查前4-6小时,甲泼尼龙40mg IV,每4小时一次,共3次`;
             }
             
             const recommendations = generateAllergyRecommendations(score);
@@ -2312,7 +2359,7 @@
                 recommendations.push(
                     '密切观察前30分钟',
                     '准备抗过敏药物',
-                    '患者教育：及时报告不适'
+                    '患者教育:及时报告不适'
                 );
             } else if (score >= 2 && score <= 3) {
                 recommendations.push(
@@ -2335,7 +2382,7 @@
                 recommendations.push(
                     '强烈建议重新评估检查必要性',
                     '考虑MRI、超声等替代方法',
-                    '如无法避免：过敏科联合会诊',
+                    '如无法避免:过敏科联合会诊',
                     'ICU监护条件下进行',
                     '完整的过敏反应抢救团队'
                 );
@@ -2351,7 +2398,6 @@
                 personnel: []
             };
             
-            // 基础药物准备
             prep.medications.push(
                 '肾上腺素 1:1000',
                 '甲泼尼龙 40-125mg',
@@ -2359,7 +2405,6 @@
                 '雷尼替丁 50mg'
             );
             
-            // 基础设备
             prep.equipment.push(
                 '心电监护设备',
                 '血压监测',
@@ -2407,20 +2452,53 @@
             switch(riskLevel) {
                 case 'minimal':
                 case 'low':
-                    choice = '标准低渗造影剂（如碘海醇、碘普罗胺）';
+                    choice = '标准低渗造影剂(如碘海醇、碘普罗胺)';
                     break;
                 case 'moderate':
-                    choice = '低渗造影剂，首选碘克沙醇（等渗）';
+                    choice = '低渗造影剂,首选碘克沙醇(等渗)';
                     break;
                 case 'high':
-                    choice = '等渗造影剂（碘克沙醇），考虑皮试';
+                    choice = '等渗造影剂(碘克沙醇),考虑皮试';
                     break;
                 case 'very-high':
-                    choice = '强烈建议避免使用，考虑MRI增强或超声检查';
+                    choice = '强烈建议避免使用,考虑MRI增强或超声检查';
                     break;
             }
             
             return choice;
+        }
+
+        function setupCheckboxExclusivity() {
+            const drugGroup = document.getElementById('drugAllergyGroup');
+            const foodGroup = document.getElementById('foodAllergyGroup');
+            
+            if (drugGroup) {
+                drugGroup.addEventListener('change', function(e) {
+                    if (e.target.type === 'checkbox' && e.target.dataset.group === 'drug') {
+                        if (e.target.id === 'drug-none' && e.target.checked) {
+                            drugGroup.querySelectorAll('input[type="checkbox"]:not(#drug-none)').forEach(cb => {
+                                cb.checked = false;
+                            });
+                        } else if (e.target.id !== 'drug-none' && e.target.checked) {
+                            document.getElementById('drug-none').checked = false;
+                        }
+                    }
+                });
+            }
+            
+            if (foodGroup) {
+                foodGroup.addEventListener('change', function(e) {
+                    if (e.target.type === 'checkbox' && e.target.dataset.group === 'food') {
+                        if (e.target.id === 'food-none' && e.target.checked) {
+                            foodGroup.querySelectorAll('input[type="checkbox"]:not(#food-none)').forEach(cb => {
+                                cb.checked = false;
+                            });
+                        } else if (e.target.id !== 'food-none' && e.target.checked) {
+                            document.getElementById('food-none').checked = false;
+                        }
+                    }
+                });
+            }
         }
 
         function setupRealTimeValidation() {
@@ -2446,6 +2524,10 @@
                             
                             if (fieldType === 'Creatinine' && (type === 'renal' || type === 'metformin')) {
                                 updateFormulaDisplay(type);
+                            }
+                            
+                            if (type === 'heart' && (fieldType === 'Creatinine' || fieldType === 'Age')) {
+                                updateHeartFormulaDisplay();
                             }
                         });
                     }
@@ -2483,7 +2565,6 @@
             }
         }
 
-        // 监听造影剂使用史选择
         document.addEventListener('change', function(e) {
             if (e.target.name === 'previousContrast') {
                 const historyDetails = document.getElementById('contrastHistoryDetails');
@@ -2491,11 +2572,11 @@
                     historyDetails.style.display = 'block';
                 } else {
                     historyDetails.style.display = 'none';
+                    document.querySelectorAll('input[name="previousReaction"]').forEach(r => r.checked = false);
                 }
                 updateAllergyRiskScore();
             }
             
-            // 监听所有过敏评估相关的输入变化
             if (e.target.closest('#allergyForm')) {
                 updateAllergyRiskScore();
             }
@@ -2537,21 +2618,30 @@
             let progress = 0;
             
             if (appState.currentPatientType === 'allergy') {
-                // 过敏评估的进度计算
-                const totalQuestions = 10;
-                let answeredQuestions = 0;
+                let totalFields = 3;
+                let completedFields = 0;
                 
-                if (document.querySelector('input[name="previousContrast"]:checked')) answeredQuestions++;
-                if (document.querySelector('input[name="asthma"]:checked')) answeredQuestions++;
-                if (document.querySelector('#drug-none:checked') || 
-                    document.querySelector('#allergyForm input[id^="drug-"]:checked')) answeredQuestions++;
-                if (document.querySelector('#food-none:checked') || 
-                    document.querySelector('#allergyForm input[id^="food-"]:checked')) answeredQuestions++;
+                const previousContrast = document.querySelector('input[name="previousContrast"]:checked');
+                if (previousContrast) {
+                    if (previousContrast.value === 'no') {
+                        completedFields += 1;
+                    } else if (previousContrast.value === 'yes') {
+                        const previousReaction = document.querySelector('input[name="previousReaction"]:checked');
+                        if (previousReaction) {
+                            completedFields += 1;
+                        }
+                    }
+                }
                 
-                const otherCheckboxes = document.querySelectorAll('#allergyForm input[id^="other-"]:checked, #allergyForm input[id^="special-"]:checked, #allergyForm input[id^="med-"]:checked');
-                if (otherCheckboxes.length > 0) answeredQuestions += 2;
+                if (document.querySelector('#drugAllergyGroup input:checked')) {
+                    completedFields += 1;
+                }
                 
-                progress = Math.min((answeredQuestions / totalQuestions) * 100, 100);
+                if (document.querySelector('input[name="asthma"]:checked')) {
+                    completedFields += 1;
+                }
+                
+                progress = (completedFields / totalFields) * 100;
             } else {
                 const requiredFields = getRequiredFields(appState.currentPatientType);
                 let completedFields = 0;
@@ -2573,7 +2663,8 @@
             
             const calculateBtn = document.getElementById('calculateBtn');
             if (calculateBtn) {
-                calculateBtn.disabled = progress < 80;
+                const threshold = appState.currentPatientType === 'allergy' ? 66 : 80;
+                calculateBtn.disabled = progress < threshold;
             }
         }
 
@@ -2607,10 +2698,10 @@
                 displayResults(results);
                 appState.currentResults = results;
                 document.getElementById('pdfBtn').disabled = false;
-                showNotification('评估计算完成！', 'success');
+                showNotification('评估计算完成!', 'success');
             } catch (error) {
                 console.error('计算过程出错:', error);
-                showNotification('计算过程中出现错误：' + error.message, 'error');
+                showNotification('计算过程中出现错误:' + error.message, 'error');
             }
         }
 
@@ -2653,7 +2744,7 @@
             const examTypeElement = document.getElementById(`${type}ExamType`);
             
             if (!heightElement || !weightElement || !heartRateElement || !examTypeElement) {
-                throw new Error('表单元素缺失，请检查输入');
+                throw new Error('表单元素缺失,请检查输入');
             }
             
             const height = parseFloat(heightElement.value);
@@ -2705,18 +2796,31 @@
                 const ef = parseFloat(document.getElementById('heartEF').value);
                 const bnp = document.getElementById('heartBNP').value;
                 const creatinine = parseFloat(document.getElementById('heartCreatinine').value) || null;
+                const age = parseInt(document.getElementById('heartAge').value) || null;
+                const gender = document.getElementById('heartGender').value;
 
                 if (!ef || ef < 10 || ef > 80) {
                     throw new Error('EF值范围应在10-80%之间');
                 }
 
-                const heartRisk = assessHeartFailureRisk(nyha, ef, bnp);
+                let eGFR = null;
+                let eGFRDetails = null;
+                if (creatinine && creatinine >= 30 && creatinine <= 500 && age) {
+                    eGFR = calculateEGFR_2021_Corrected(creatinine, age, gender);
+                    eGFRDetails = generateSimplifiedEGFRCalculation(creatinine, age, gender);
+                }
+
+                const heartRisk = assessHeartFailureRisk(nyha, ef, bnp, eGFR);
                 specialData = {
                     nyha,
                     ef,
                     bnp,
                     heartRisk,
-                    creatinine
+                    creatinine,
+                    age,
+                    gender,
+                    eGFR,
+                    eGFRDetails
                 };
             }
 
@@ -2737,19 +2841,12 @@
                 maxVolume = 75;
             }
 
-            let contrastAdjustment = '';
+            let contrastAdjustments = [];
             
-            if (patientType === 'renal' && specialData && specialData.eGFR < 45) {
+            if ((patientType === 'renal' || patientType === 'metformin') && specialData && specialData.eGFR < 45) {
                 const originalVolume = contrastVolume;
                 contrastVolume = contrastVolume * 0.8;
-                contrastAdjustment = `肾功能不全调整：${originalVolume.toFixed(1)}ml → ${contrastVolume.toFixed(1)}ml`;
-            }
-            
-            if (patientType === 'metformin' && specialData && specialData.eGFR < 60) {
-                const reductionFactor = specialData.eGFR < 45 ? 0.8 : 0.9;
-                const originalVolume = contrastVolume;
-                contrastVolume = contrastVolume * reductionFactor;
-                contrastAdjustment = `肾功能不全调整：${originalVolume.toFixed(1)}ml → ${contrastVolume.toFixed(1)}ml`;
+                contrastAdjustments.push(`肾功能不全调整:${originalVolume.toFixed(1)}ml → ${contrastVolume.toFixed(1)}ml (减量20%)`);
             }
             
             if (patientType === 'heart' && specialData) {
@@ -2763,7 +2860,13 @@
                 if (reductionFactor < 1) {
                     const originalVolume = contrastVolume;
                     contrastVolume = contrastVolume * reductionFactor;
-                    contrastAdjustment = `心功能不全调整：${originalVolume.toFixed(1)}ml → ${contrastVolume.toFixed(1)}ml`;
+                    contrastAdjustments.push(`心功能不全调整:${originalVolume.toFixed(1)}ml → ${contrastVolume.toFixed(1)}ml (减量${((1-reductionFactor)*100).toFixed(0)}%)`);
+                }
+                
+                if (specialData.eGFR && specialData.eGFR < 45) {
+                    const originalVolume = contrastVolume;
+                    contrastVolume = contrastVolume * 0.8;
+                    contrastAdjustments.push(`心肾综合征额外调整:${originalVolume.toFixed(1)}ml → ${contrastVolume.toFixed(1)}ml (再减量20%)`);
                 }
             }
 
@@ -2773,9 +2876,12 @@
                 contrastVolume = maxVolume;
             }
 
-            let flowRate = examType === 'coronary' ? 
-                contrastVolume / 12 : 
-                (contrastVolume - 15) / 12;
+            let flowRate;
+            if (examType === 'coronary') {
+                flowRate = contrastVolume / 12;
+            } else {
+                flowRate = Math.max(contrastVolume - 15, 0) / 12;
+            }
 
             if (patientType === 'heart' && specialData) {
                 const risk = specialData.heartRisk;
@@ -2801,7 +2907,8 @@
                 contrastVolume, flowRate, maxVolume,
                 isVolumeExceeded, originalVolume,
                 isFlowRateExceeded, originalFlowRate,
-                specialData, contrastAdjustment,
+                specialData, 
+                contrastAdjustments,
                 timestamp: new Date()
             };
         }
@@ -2832,7 +2939,7 @@
                     'moderate': '中度反应',
                     'severe': '严重反应'
                 };
-                previousContrastText = `既往使用过造影剂，反应情况：${reactionTexts[results.previousReaction] || '未知'}`;
+                previousContrastText = `既往使用过造影剂,反应情况:${reactionTexts[results.previousReaction] || '未知'}`;
             } else {
                 previousContrastText = '既往未使用过造影剂';
             }
@@ -2848,14 +2955,14 @@
                 <div class="calc-type">
                     <div>造影剂过敏风险评估 | 2024版评估标准</div>
                     <div style="font-size: 12px; opacity: 0.8; margin-top: 5px;">
-                        评估时间：${results.timestamp.toLocaleString()}
+                        评估时间:${results.timestamp.toLocaleString()}
                     </div>
                 </div>
                 
                 <div class="risk-score-display">
                     <div class="score-value ${assessment.riskColor}">${results.score}</div>
                     <div style="font-size: 1.2em; margin-bottom: 5px; font-weight: 600; color: var(--${riskColorClass}-color);">${assessment.riskText}</div>
-                    <div style="font-size: 0.9em; opacity: 0.8;">反应发生率：${assessment.reactionRate}</div>
+                    <div style="font-size: 0.9em; opacity: 0.8;">反应发生率:${assessment.reactionRate}</div>
                 </div>
 
                 <div class="result-item">
@@ -2881,31 +2988,31 @@
 
                 ${results.selectedRiskFactors.length > 0 ? `
                 <div class="info-box allergy">
-                    <strong>已识别的风险因素：</strong><br>
+                    <strong>已识别的风险因素:</strong><br>
                     ${results.selectedRiskFactors.map(factor => `• ${factor}`).join('<br>')}
                 </div>
                 ` : ''}
 
                 <div class="info-box ${riskColorClass}">
-                    <strong>预处理方案：</strong><br>
+                    <strong>预处理方案:</strong><br>
                     ${assessment.premedication.split('\n').join('<br>')}
                 </div>
 
                 <div class="info-box normal">
-                    <strong>临床监护建议：</strong><br>
+                    <strong>临床监护建议:</strong><br>
                     ${assessment.recommendations.map(rec => `• ${rec}`).join('<br>')}
                 </div>
 
                 <div class="info-box normal">
-                    <strong>造影剂选择建议：</strong><br>
+                    <strong>造影剂选择建议:</strong><br>
                     ${assessment.contrastChoice}
                 </div>
 
                 <div class="info-box normal">
-                    <strong>应急药物准备：</strong><br>
-                    <strong>必备药物：</strong>${assessment.emergencyPrep.medications.join('、')}<br>
-                    <strong>必备设备：</strong>${assessment.emergencyPrep.equipment.join('、')}
-                    ${assessment.emergencyPrep.personnel.length > 0 ? `<br><strong>人员要求：</strong>${assessment.emergencyPrep.personnel.join('、')}` : ''}
+                    <strong>应急药物准备:</strong><br>
+                    <strong>必备药物:</strong>${assessment.emergencyPrep.medications.join('、')}<br>
+                    <strong>必备设备:</strong>${assessment.emergencyPrep.equipment.join('、')}
+                    ${assessment.emergencyPrep.personnel.length > 0 ? `<br><strong>人员要求:</strong>${assessment.emergencyPrep.personnel.join('、')}` : ''}
                 </div>
             `;
         }
@@ -2942,10 +3049,10 @@
             if (results.patientType === 'normal') {
                 specialAssessment = `
                     <div class="info-box normal">
-                        <strong>正常患者处理流程：</strong><br>
-                        • 肾功能正常，无需特殊评估<br>
+                        <strong>正常患者处理流程:</strong><br>
+                        • 肾功能正常,无需特殊评估<br>
                         • 按标准流程进行造影检查<br>
-                        • 常规监测，无特殊风险
+                        • 常规监测,无特殊风险
                     </div>
                 `;
             } else if (results.patientType === 'renal' && results.specialData) {
@@ -2992,7 +3099,7 @@
                         <span class="result-value" style="color: var(--${riskClass}-color);">${renalRisk}</span>
                     </div>
                     <div class="info-box ${riskClass}">
-                        <strong>临床处理建议：</strong><br>
+                        <strong>临床处理建议:</strong><br>
                         ${recommendations.map(rec => `• ${rec}`).join('<br>')}
                     </div>
                 `;
@@ -3030,7 +3137,7 @@
                         <span class="result-value">${risk.riskScore.toFixed(1)} 分</span>
                     </div>
                     <div class="info-box ${risk.riskLevel === 'low' ? 'normal' : risk.riskLevel === 'moderate' ? 'renal' : 'metformin'}">
-                        <strong>临床处理建议：</strong><br>
+                        <strong>临床处理建议:</strong><br>
                         ${risk.recommendations.map(rec => `• ${rec}`).join('<br>')}
                     </div>
                 `;
@@ -3071,6 +3178,12 @@
                             <span class="result-value">${data.creatinine} μmol/L</span>
                         </div>
                     ` : ''}
+                    ${data.eGFR ? `
+                        <div class="result-item">
+                            <span class="result-label">eGFR (心肾评估)</span>
+                            <span class="result-value">${data.eGFR} ml/min/1.73m²</span>
+                        </div>
+                    ` : ''}
                     <div class="result-item">
                         <span class="result-label">风险等级</span>
                         <span class="result-value" style="color: ${riskColor};">${risk.clinicalAction}</span>
@@ -3080,7 +3193,7 @@
                         <span class="result-value">${risk.riskScore} 分</span>
                     </div>
                     <div class="info-box ${risk.riskLevel === 'low' ? 'normal' : risk.riskLevel === 'moderate' ? 'heart' : risk.riskLevel === 'high' ? 'renal' : 'metformin'}">
-                        <strong>临床处理建议：</strong><br>
+                        <strong>临床处理建议:</strong><br>
                         ${risk.recommendations.map(rec => `• ${rec}`).join('<br>')}
                     </div>
                 `;
@@ -3090,10 +3203,10 @@
             if (results.isVolumeExceeded) {
                 limitWarning += `
                     <div class="info-box renal">
-                        <strong>造影剂用量限制提示：</strong><br>
-                        理论计算用量：${results.originalVolume.toFixed(1)}ml<br>
-                        安全限制用量：${results.contrastVolume.toFixed(1)}ml（${examTypeText}最大用量：${results.maxVolume}ml）<br>
-                        <strong>建议：</strong>已应用安全上限，请结合患者具体情况评估。
+                        <strong>造影剂用量限制提示:</strong><br>
+                        理论计算用量:${results.originalVolume.toFixed(1)}ml<br>
+                        安全限制用量:${results.contrastVolume.toFixed(1)}ml(${examTypeText}最大用量:${results.maxVolume}ml)<br>
+                        <strong>建议:</strong>已应用安全上限,请结合患者具体情况评估。
                     </div>
                 `;
             }
@@ -3101,20 +3214,20 @@
             if (results.isFlowRateExceeded) {
                 limitWarning += `
                     <div class="info-box renal">
-                        <strong>注射流速限制提示：</strong><br>
-                        理论计算流速：${results.originalFlowRate.toFixed(2)}ml/s<br>
-                        安全限制流速：${results.flowRate.toFixed(2)}ml/s（最大流速：5.0ml/s）<br>
-                        <strong>建议：</strong>已应用安全上限，可考虑延长注射时间或调整方案。
+                        <strong>注射流速限制提示:</strong><br>
+                        理论计算流速:${results.originalFlowRate.toFixed(2)}ml/s<br>
+                        安全限制流速:${results.flowRate.toFixed(2)}ml/s(最大流速:5.0ml/s)<br>
+                        <strong>建议:</strong>已应用安全上限,可考虑延长注射时间或调整方案。
                     </div>
                 `;
             }
 
-            if (results.contrastAdjustment) {
+            if (results.contrastAdjustments && results.contrastAdjustments.length > 0) {
                 limitWarning += `
                     <div class="info-box renal">
-                        <strong>特殊调整提示：</strong><br>
-                        ${results.contrastAdjustment}<br>
-                        <strong>原因：</strong>${
+                        <strong>特殊调整提示:</strong><br>
+                        ${results.contrastAdjustments.map(adj => `• ${adj}`).join('<br>')}<br>
+                        <strong>原因:</strong>${
                             results.patientType === 'heart' ? '心功能不全患者减少造影剂用量以降低容量负荷' :
                             '肾功能不全患者减少造影剂用量以降低肾毒性风险'
                         }。
@@ -3124,9 +3237,9 @@
             
             container.innerHTML = `
                 <div class="calc-type">
-                    <div>患者类型：${patientTypeText} | 检查：${examTypeText} | 心率：${heartRateText}</div>
+                    <div>患者类型:${patientTypeText} | 检查:${examTypeText} | 心率:${heartRateText}</div>
                     <div style="font-size: 12px; opacity: 0.8; margin-top: 5px;">
-                        计算时间：${results.timestamp.toLocaleString()}
+                        计算时间:${results.timestamp.toLocaleString()}
                     </div>
                 </div>
                 
@@ -3144,7 +3257,7 @@
                 </div>
                 
                 <div class="${bmiClass}">
-                    <strong>BMI评估：</strong>${bmiStatus}
+                    <strong>BMI评估:</strong>${bmiStatus}
                 </div>
                 
                 ${specialAssessment}
@@ -3165,15 +3278,15 @@
                 ${limitWarning}
                 
                 <div class="info-box normal">
-                    <strong>计算依据：</strong><br>
-                    <strong>eGFR公式：</strong>2021版CKD-EPI肾小球滤过率方程（无种族系数）<br>
-                    <strong>造影剂用量：</strong>${results.examType === 'coronary' ? 
-                        (results.heartRate <= 80 ? '冠脉CTA心率≤80：体重×0.8ml/kg' : '冠脉CTA心率>80：体重×0.85ml/kg') :
-                        (results.heartRate <= 80 ? '胸痛三联心率≤80：体重×0.8ml/kg + 15ml' : '胸痛三联心率>80：体重×0.85ml/kg + 15ml')
+                    <strong>计算依据:</strong><br>
+                    <strong>eGFR公式:</strong>2021版CKD-EPI肾小球滤过率方程(无种族系数)<br>
+                    <strong>造影剂用量:</strong>${results.examType === 'coronary' ? 
+                        (results.heartRate <= 80 ? '冠脉CTA心率≤80:体重×0.8ml/kg' : '冠脉CTA心率>80:体重×0.85ml/kg') :
+                        (results.heartRate <= 80 ? '胸痛三联心率≤80:体重×0.8ml/kg + 15ml' : '胸痛三联心率>80:体重×0.85ml/kg + 15ml')
                     }<br>
-                    <strong>注射流速：</strong>${results.examType === 'coronary' ? '用量÷12s' : '(用量-15ml)÷12s'}<br>
-                    <strong>安全限制：</strong>${results.examType === 'coronary' ? '冠脉CTA最大60ml' : '胸痛三联最大75ml'}，流速最大5.0ml/s<br>
-                    <strong>程序版本：</strong>v4.1版本，完整功能增强版
+                    <strong>注射流速:</strong>${results.examType === 'coronary' ? '用量÷12s' : '(用量-15ml)÷12s (所有调整后的最终用量)'}<br>
+                    <strong>安全限制:</strong>${results.examType === 'coronary' ? '冠脉CTA最大60ml' : '胸痛三联最大75ml'},流速最大5.0ml/s<br>
+                    <strong>程序版本:</strong>v4.2混合版本
                 </div>
             `;
         }
@@ -3186,49 +3299,32 @@
             
             try {
                 const results = appState.currentResults;
-                
-                if (!results.height && !results.score && results.patientType !== 'allergy') {
-                    throw new Error('计算结果数据不完整，无法生成PDF');
-                }
-                
                 const reportId = Date.now().toString(36).toUpperCase();
                 const reportNumber = `${new Date().getFullYear()}${(new Date().getMonth() + 1).toString().padStart(2, '0')}${new Date().getDate().toString().padStart(2, '0')}_${reportId}`;
                 
-                if (typeof window.open !== 'function') {
-                    throw new Error('当前浏览器不支持PDF导出功能');
-                }
-                
                 const pdfWindow = window.open('', '_blank', 'width=800,height=600');
                 if (!pdfWindow) {
-                    showNotification('浏览器阻止了弹窗，请允许弹窗后重试', 'warning');
+                    showNotification('浏览器阻止了弹窗,请允许弹窗后重试', 'warning');
                     return;
                 }
                 
+                // 关键:过敏评估使用专门PDF格式,其他使用详细PDF格式
                 const pdfContent = results.patientType === 'allergy' ? 
                     generateAllergyPDFContent(results, reportNumber) : 
-                    generateSimplifiedPDFContent(results, reportNumber);
+                    generateDetailedPDFContent(results, reportNumber);
                 
-                pdfWindow.document.open();
                 pdfWindow.document.write(pdfContent);
                 pdfWindow.document.close();
                 
-                pdfWindow.onerror = function(error) {
-                    console.error('PDF窗口错误:', error);
-                    showNotification('PDF生成过程中出现错误', 'error');
-                    pdfWindow.close();
-                };
+                if (pdfWindow.document.readyState === 'complete') {
+                    setTimeout(() => pdfWindow.print(), 500);
+                } else {
+                    pdfWindow.addEventListener('load', function() {
+                        setTimeout(() => pdfWindow.print(), 500);
+                    });
+                }
                 
-                pdfWindow.onload = function() {
-                    setTimeout(() => {
-                        try {
-                            pdfWindow.print();
-                            showNotification('请在打印对话框中选择"保存为PDF"', 'info');
-                        } catch (printError) {
-                            console.error('打印功能错误:', printError);
-                            showNotification('无法调用打印功能，请手动打印页面', 'warning');
-                        }
-                    }, 500);
-                };
+                showNotification('请在打印对话框中选择"保存为PDF"', 'info');
                 
             } catch (error) {
                 console.error('PDF导出出错:', error);
@@ -3236,6 +3332,7 @@
             }
         }
 
+        // 过敏评估专用PDF格式
         function generateAllergyPDFContent(results, reportNumber) {
             const currentDate = new Date().toLocaleString();
             const assessment = results.riskAssessment;
@@ -3379,21 +3476,22 @@
     <div class="recommendation-box">
         <div class="section-title">应急准备</div>
         <div style="font-size: 10px; line-height: 1.4;">
-            <strong>必备药物：</strong>${assessment.emergencyPrep.medications.join('、')}<br>
-            <strong>必备设备：</strong>${assessment.emergencyPrep.equipment.join('、')}
-            ${assessment.emergencyPrep.personnel.length > 0 ? `<br><strong>人员要求：</strong>${assessment.emergencyPrep.personnel.join('、')}` : ''}
+            <strong>必备药物:</strong>${assessment.emergencyPrep.medications.join('、')}<br>
+            <strong>必备设备:</strong>${assessment.emergencyPrep.equipment.join('、')}
+            ${assessment.emergencyPrep.personnel.length > 0 ? `<br><strong>人员要求:</strong>${assessment.emergencyPrep.personnel.join('、')}` : ''}
         </div>
     </div>
     
     <div class="footer">
-        <p><strong>重要声明:</strong> 本评估结果仅供学术研究参考，不能100%预测过敏反应。临床使用时必须结合患者具体情况，配备完善的抢救措施。</p>
-        <p><strong>报告编号:</strong> ${reportNumber} | <strong>程序版本:</strong> v4.1 | <strong>开发者:</strong> 影像涛哥</p>
+        <p><strong>重要声明:</strong> 本评估结果仅供学术研究参考,不能100%预测过敏反应。临床使用时必须结合患者具体情况,配备完善的抢救措施。</p>
+        <p><strong>报告编号:</strong> ${reportNumber} | <strong>程序版本:</strong> v4.2混合版 | <strong>开发者:</strong> 影像涛哥</p>
     </div>
 </body>
 </html>`;
         }
 
-        function generateSimplifiedPDFContent(results, reportNumber) {
+        // 前四类患者详细PDF格式(沿用v3.4样式)
+        function generateDetailedPDFContent(results, reportNumber) {
             const currentDate = new Date().toLocaleString();
             
             let bmiStatus = '';
@@ -3494,7 +3592,7 @@
                 assessmentResults = `
                     <div class="assessment-section">
                         <div class="assessment-title">正常患者处理流程</div>
-                        <div class="assessment-content">肾功能正常，无特殊用药史，按标准流程进行造影检查，常规监测即可</div>
+                        <div class="assessment-content">肾功能正常,无特殊用药史,按标准流程进行造影检查,常规监测即可</div>
                     </div>
                 `;
             } else if (results.patientType === 'renal' && results.specialData) {
@@ -3504,13 +3602,13 @@
                 
                 let clinicalRecommendation = '';
                 if (data.eGFR >= 60) {
-                    clinicalRecommendation = '标准流程，常规水化治疗，造影后常规监测';
+                    clinicalRecommendation = '标准流程,常规水化治疗,造影后常规监测';
                 } else if (data.eGFR >= 45) {
-                    clinicalRecommendation = '适当减量，加强水化治疗，造影后24-48小时复查肾功能';
+                    clinicalRecommendation = '适当减量,加强水化治疗,造影后24-48小时复查肾功能';
                 } else if (data.eGFR >= 30) {
-                    clinicalRecommendation = '造影剂减量至80%，充分静脉水化，密切关注有无过敏反应，密切监测48-72小时';
+                    clinicalRecommendation = '造影剂减量至80%,充分静脉水化,密切关注有无过敏反应,密切监测48-72小时';
                 } else {
-                    clinicalRecommendation = '强烈建议避免造影剂检查，考虑MRI、超声等替代检查方法';
+                    clinicalRecommendation = '强烈建议避免造影剂检查,考虑MRI、超声等替代检查方法';
                 }
 
                 assessmentResults = `
@@ -3531,7 +3629,7 @@
                         <div class="assessment-title">二甲双胍风险评估</div>
                         <div class="assessment-content">
                             风险评分${risk.riskScore.toFixed(1)}分, <span style="color: ${riskColor}; font-weight: bold;">${risk.clinicalAction}</span><br>
-                            用药管理: 造影前${data.eGFR >= 60 ? '48小时' : '48-72小时'}停药，造影后${data.eGFR >= 60 ? '24-48小时' : '48-72小时'}复查肾功能正常后恢复用药
+                            用药管理: 造影前${data.eGFR >= 60 ? '48小时' : '48-72小时'}停药,造影后${data.eGFR >= 60 ? '24-48小时' : '48-72小时'}复查肾功能正常后恢复用药
                         </div>
                     </div>
                 `;
@@ -3542,13 +3640,13 @@
 
                 let monitoringPlan = '';
                 if (risk.riskLevel === 'low') {
-                    monitoringPlan = '标准处理，检查后观察2小时';
+                    monitoringPlan = '标准处理,检查后观察2小时';
                 } else if (risk.riskLevel === 'moderate') {
-                    monitoringPlan = '用量减至85%，流速≤4.5ml/s，检查后观察4小时';
+                    monitoringPlan = '用量减至85%,流速≤4.5ml/s,检查后观察4小时';
                 } else if (risk.riskLevel === 'high') {
-                    monitoringPlan = '用量减至70%，流速≤4.0ml/s，心内科会诊，准备急救设备';
+                    monitoringPlan = '用量减至70%,流速≤4.0ml/s,心内科会诊,准备急救设备';
                 } else {
-                    monitoringPlan = '慎重考虑，建议推迟检查或在CCU监护条件下进行';
+                    monitoringPlan = '慎重考虑,建议推迟检查或在CCU监护条件下进行';
                 }
 
                 assessmentResults = `
@@ -3569,16 +3667,16 @@
                     <div class="calculation-details">
                         <h3>eGFR详细演算过程</h3>
                         <div class="calculation-steps">
-                            <strong>2021版CKD-EPI公式：</strong><br>
+                            <strong>2021版CKD-EPI公式:</strong><br>
                             <pre style="font-size: 9px; line-height: 1.2; white-space: pre-wrap; background: #f8f9fa; padding: 6px; border-radius: 4px; margin: 3px 0; font-family: 'Courier New', monospace;">${eGFRDetails.simplifiedCalculation}</pre>
-                            <strong>最终结果：</strong> eGFR = ${eGFRDetails.result} ml/min/1.73m²
+                            <strong>最终结果:</strong> eGFR = ${eGFRDetails.result} ml/min/1.73m²
                         </div>
                     </div>
                 `;
             }
 
             let safetySection = '';
-            if (results.isVolumeExceeded || results.isFlowRateExceeded || results.contrastAdjustment) {
+            if (results.isVolumeExceeded || results.isFlowRateExceeded || results.contrastAdjustments.length > 0) {
                 let warnings = [];
                 
                 if (results.isVolumeExceeded) {
@@ -3589,15 +3687,15 @@
                     warnings.push(`流速超限: 理论${results.originalFlowRate.toFixed(2)}ml/s → 限制${results.flowRate.toFixed(2)}ml/s`);
                 }
                 
-                if (results.contrastAdjustment) {
-                    warnings.push(`${results.contrastAdjustment}`);
+                if (results.contrastAdjustments.length > 0) {
+                    warnings.push(`${results.contrastAdjustments.join(' | ')}`);
                 }
                 
                 safetySection = `
                     <div class="warning-section">
                         <div class="warning-title">安全限制与调整</div>
                         <div class="warning-content">${warnings.join(' | ')}<br>
-                        已应用程序安全上限，实际使用需结合患者具体情况评估</div>
+                        已应用程序安全上限,实际使用需结合患者具体情况评估</div>
                     </div>
                 `;
             }
@@ -3815,7 +3913,7 @@
 <body>
     <div class="header">
         <h1>影像学术研究计算结果</h1>
-        <div class="subtitle">CTA造影剂用量计算系统 v4.1 - ${patientTypeText}</div>
+        <div class="subtitle">CTA造影剂用量与BMI学术参考计算 v4.2混合版 - ${patientTypeText}</div>
         <div class="meta-info">
             计算时间: ${results.timestamp.toLocaleString()} | 生成时间: ${currentDate} | 编号: ${reportNumber}
         </div>
@@ -3918,22 +4016,22 @@
                     (results.heartRate <= 80 ? '体重×0.8+15ml' : '体重×0.85+15ml')
                 } | 
                 <strong>注射流速:</strong> ${results.examType === 'coronary' ? '用量÷12s' : '(用量-15ml)÷12s'}
-                ${results.contrastAdjustment ? `<br><strong>调整依据:</strong> ${results.contrastAdjustment}` : ''}
+                ${results.contrastAdjustments.length > 0 ? `<br><strong>调整依据:</strong> ${results.contrastAdjustments.join('; ')}` : ''}
                 ${results.specialData && (results.patientType === 'renal' || results.patientType === 'metformin') ? 
-                `<br><strong>eGFR计算:</strong> 2021版CKD-EPI公式（无种族系数），${results.specialData.gender === 'male' ? '男性' : '女性'}${results.specialData.age}岁患者，详细演算过程见上方` : ''}
+                `<br><strong>eGFR计算:</strong> 2021版CKD-EPI公式(无种族系数),${results.specialData.gender === 'male' ? '男性' : '女性'}${results.specialData.age}岁患者,详细演算过程见上方` : ''}
             </div>
         </div>
     </div>
     
     <div class="tech-specs">
-        <strong>程序版本:</strong> v4.1 | 
+        <strong>程序版本:</strong> v4.2混合版 | 
         <strong>开发者:</strong> 影像涛哥 | 
         <strong>计算标准:</strong> 基于联影设备技术参数与临床研究数据 | 
-        <strong>计算公式:</strong> 2021版CKD-EPI肾小球滤过率方程（无种族系数）
+        <strong>计算公式:</strong> 2021版CKD-EPI肾小球滤过率方程(无种族系数)
     </div>
     
     <div class="footer">
-        <p><strong>重要声明:</strong> 本计算结果仅供影像技术教学和学术研究参考，严禁用于临床诊断或治疗决策。实际使用时必须结合患者具体病史、实验室检查结果和临床医师判断。开发者不承担任何法律责任。</p>
+        <p><strong>重要声明:</strong> 本计算结果仅供影像技术教学和学术研究参考,严禁用于临床诊断或治疗决策。实际使用时必须结合患者具体病史、实验室检查结果和临床医师判断。开发者不承担任何法律责任。</p>
         <p><strong>结果编号:</strong> ${reportNumber} | <strong>技术支持:</strong> 联影CT960+平台 | <strong>使用许可:</strong> 仅限学术研究用途 | <strong>eGFR公式:</strong> 2021版CKD-EPI方程</p>
     </div>
 </body>
@@ -3977,6 +4075,7 @@
                 setInterval(updateClock, 1000);
                 
                 setupRealTimeValidation();
+                setupCheckboxExclusivity();
                 updateProgress();
                 
                 document.addEventListener('keypress', function(e) {
@@ -3985,7 +4084,6 @@
                     }
                 });
                 
-                // 监听所有表单输入变化
                 document.addEventListener('input', function(e) {
                     updateProgress();
                     
@@ -3996,7 +4094,7 @@
                 
             } catch (error) {
                 console.error('页面初始化出错:', error);
-                showNotification('⚠️ 页面初始化过程中出现问题，部分功能可能无法正常使用', 'warning');
+                showNotification('页面初始化过程中出现问题,部分功能可能无法正常使用', 'warning');
             }
         });
 
