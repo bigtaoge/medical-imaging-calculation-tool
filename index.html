@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>影像学术研究计算工具 v3.4</title>
+    <title>影像学术研究计算工具 v4.1 - 完整功能增强版</title>
     <style>
         :root {
             --primary: #4f46e5;
@@ -20,6 +20,7 @@
             --renal-color: #f59e0b;
             --metformin-color: #ef4444;
             --heart-color: #3b82f6;
+            --allergy-color: #8b5cf6;
         }
 
         [data-theme="dark"] {
@@ -34,6 +35,7 @@
             --border: #374151;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
             --heart-color: #60a5fa;
+            --allergy-color: #a78bfa;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,7 +50,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             background: var(--bg);
             border-radius: 20px;
@@ -113,7 +115,7 @@
             display: inline-block;
         }
 
-        /* 电子钟样式 - 移动端优化 */
+        /* 电子钟样式 */
         .clock-container {
             background: linear-gradient(145deg, #ffffff, #f8f9fa);
             border: 2px solid transparent;
@@ -151,14 +153,6 @@
         @keyframes borderGlow {
             0% { opacity: 0.6; transform: scale(1); }
             100% { opacity: 1; transform: scale(1.02); }
-        }
-
-        .clock-container:hover {
-            transform: translateY(-2px);
-            box-shadow: 
-                0 12px 40px rgba(79, 70, 229, 0.15),
-                inset 0 1px 3px rgba(255, 255, 255, 0.9),
-                inset 0 -1px 2px rgba(0, 0, 0, 0.05);
         }
 
         .digits-container {
@@ -219,7 +213,6 @@
         .segment-a { top: 8px; left: 12px; width: 36px; height: 8px; }
         .segment-d { bottom: 8px; left: 12px; width: 36px; height: 8px; }
         .segment-g { top: 50%; left: 12px; width: 36px; height: 8px; transform: translateY(-50%); }
-
         .segment-b { top: 12px; right: 8px; width: 8px; height: 36px; }
         .segment-c { bottom: 12px; right: 8px; width: 8px; height: 36px; }
         .segment-e { bottom: 12px; left: 8px; width: 8px; height: 36px; }
@@ -284,7 +277,7 @@
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
         }
 
@@ -314,6 +307,7 @@
         .category-card.renal::before { background: var(--renal-color); }
         .category-card.metformin::before { background: var(--metformin-color); }
         .category-card.heart::before { background: var(--heart-color); }
+        .category-card.allergy::before { background: var(--allergy-color); }
 
         .category-card:hover {
             transform: translateY(-5px);
@@ -346,6 +340,11 @@
             box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
         }
 
+        .category-card.allergy.active {
+            border-color: var(--allergy-color);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.2);
+        }
+
         .category-icon {
             font-size: 3em;
             margin-bottom: 15px;
@@ -369,6 +368,7 @@
         .category-card.renal .category-name { color: var(--renal-color); }
         .category-card.metformin .category-name { color: var(--metformin-color); }
         .category-card.heart .category-name { color: var(--heart-color); }
+        .category-card.allergy .category-name { color: var(--allergy-color); }
 
         .form-container {
             display: none;
@@ -411,6 +411,7 @@
         .section-title.renal { color: var(--renal-color); }
         .section-title.metformin { color: var(--metformin-color); }
         .section-title.heart { color: var(--heart-color); }
+        .section-title.allergy { color: var(--allergy-color); }
 
         .form-row {
             display: grid;
@@ -471,6 +472,63 @@
             display: none;
         }
 
+        .real-time-validation {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+        }
+
+        .validation-success { color: var(--success); }
+        .validation-error { color: var(--error); }
+
+        .formula-display {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item:hover {
+            background: var(--card);
+        }
+
+        .checkbox-item.checked {
+            background: rgba(79, 70, 229, 0.1);
+            border-color: var(--primary);
+        }
+
+        .checkbox-item input[type="checkbox"], .checkbox-item input[type="radio"] {
+            margin: 0;
+            width: auto;
+            height: auto;
+        }
+
         .info-box {
             padding: 20px;
             border-radius: 10px;
@@ -502,6 +560,12 @@
             background: linear-gradient(135deg, #dbeafe, #bfdbfe);
             color: #1e3a8a;
             border-left-color: var(--heart-color);
+        }
+
+        .info-box.allergy {
+            background: linear-gradient(135deg, #e9d5ff, #d8b4fe);
+            color: #581c87;
+            border-left-color: var(--allergy-color);
         }
 
         .grading-table {
@@ -536,10 +600,32 @@
             white-space: nowrap;
         }
 
+        .grade-minimal { color: var(--success); }
         .grade-low { color: var(--normal-color); }
         .grade-moderate { color: var(--renal-color); }
         .grade-high { color: var(--metformin-color); }
         .grade-very-high { color: var(--error); }
+
+        .risk-score-display {
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .score-value {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .score-minimal { color: var(--success); }
+        .score-low { color: var(--normal-color); }
+        .score-moderate { color: var(--renal-color); }
+        .score-high { color: var(--metformin-color); }
+        .score-very-high { color: var(--error); }
 
         .btn {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -652,29 +738,6 @@
             transition: width 0.3s ease;
         }
 
-        .real-time-validation {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 18px;
-        }
-
-        .validation-success { color: var(--success); }
-        .validation-error { color: var(--error); }
-
-        .formula-display {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 10px;
-            margin-top: 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            color: var(--text);
-            opacity: 0.8;
-        }
-
         .disclaimer {
             background: linear-gradient(135deg, #fef7cd, #fed7aa);
             color: #92400e;
@@ -724,6 +787,10 @@
                 gap: 12px;
             }
 
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
             .grading-table {
                 font-size: 10px;
             }
@@ -736,17 +803,13 @@
             .clock-container {
                 padding: 15px 10px;
                 margin: 20px 0;
-                border-radius: 16px;
-                background: linear-gradient(145deg, #ffffff, #f8f9fa);
             }
             
             .digits-container {
                 gap: 6px;
-                justify-content: center;
                 flex-wrap: nowrap;
                 overflow-x: auto;
                 padding: 0 10px;
-                min-width: 100%;
             }
             
             .digit-group {
@@ -757,17 +820,7 @@
             .digit {
                 width: 45px;
                 height: 75px;
-                border-radius: 8px;
-                padding: 6px;
-                box-shadow: 
-                    0 3px 10px rgba(0, 0, 0, 0.12),
-                    inset 0 2px 4px rgba(255, 255, 255, 0.8),
-                    inset 0 -2px 3px rgba(0, 0, 0, 0.05);
                 min-width: 45px;
-            }
-            
-            .digit:hover {
-                transform: none;
             }
             
             .segment-a, .segment-d, .segment-g {
@@ -781,70 +834,9 @@
                 height: 26px;
             }
             
-            .segment-b, .segment-c {
-                right: 8px;
-            }
-            
-            .segment-e, .segment-f {
-                left: 8px;
-            }
-            
-            .segment-a { top: 8px; }
-            .segment-d { bottom: 8px; }
-            .segment-g { top: 50%; transform: translateY(-50%); }
-            .segment-b { top: 11px; }
-            .segment-c { bottom: 11px; }
-            .segment-e { bottom: 11px; }
-            .segment-f { top: 11px; }
-            
             .clock-colon {
                 font-size: 1.8rem;
                 margin: 0 4px;
-                font-weight: 900;
-                line-height: 1;
-                flex-shrink: 0;
-            }
-            
-            .clock-label {
-                font-size: 12px;
-                margin-top: 10px;
-                font-weight: 600;
-            }
-
-            @media (max-width: 480px) {
-                .digits-container {
-                    gap: 3px;
-                    padding: 0 5px;
-                }
-                
-                .digit-group {
-                    gap: 2px;
-                }
-                
-                .digit {
-                    width: 38px;
-                    height: 65px;
-                    min-width: 38px;
-                }
-                
-                .segment-a, .segment-d, .segment-g {
-                    width: 24px;
-                    height: 4px;
-                    left: 7px;
-                }
-                
-                .segment-b, .segment-c, .segment-e, .segment-f {
-                    width: 4px;
-                    height: 22px;
-                }
-                
-                .segment-b, .segment-c { right: 7px; }
-                .segment-e, .segment-f { left: 7px; }
-                
-                .clock-colon {
-                    font-size: 1.5rem;
-                    margin: 0 2px;
-                }
             }
         }
 
@@ -865,7 +857,7 @@
                 <span id="theme-text">夜间模式</span>
             </div>
             <h1>影像学术研究计算工具</h1>
-            <div class="subtitle">CTA造影剂用量与BMI学术参考计算 v3.4</div>
+            <div class="subtitle">CTA造影剂用量计算 + 过敏风险评估 + 多专科评估 v4.1</div>
             <div class="developer-info">
                 💻 程序开发者：影像涛哥
             </div>
@@ -946,14 +938,14 @@
         
         <!-- 患者分类选择器 -->
         <div class="patient-category-selector">
-            <div class="category-title">请选择患者类型</div>
+            <div class="category-title">选择评估类型 - 五大专业评估系统</div>
             <div class="category-grid">
                 <div class="category-card normal" onclick="selectPatientType('normal')">
                     <div class="category-icon">👤</div>
                     <div class="category-name">正常患者</div>
                     <div class="category-description">
                         肾功能正常<br>
-                        无二甲双胍用药史<br>
+                        无特殊用药史<br>
                         标准计算流程
                     </div>
                 </div>
@@ -985,6 +977,16 @@
                         心功能异常<br>
                         需要NYHA分级评估<br>
                         造影剂用量限制
+                    </div>
+                </div>
+
+                <div class="category-card allergy" onclick="selectPatientType('allergy')">
+                    <div class="category-icon">⚠️</div>
+                    <div class="category-name">过敏风险评估</div>
+                    <div class="category-description">
+                        造影剂过敏风险评估<br>
+                        2024版评估标准<br>
+                        预处理方案指导
                     </div>
                 </div>
             </div>
@@ -1424,6 +1426,314 @@
             </div>
         </div>
 
+        <!-- 过敏风险评估表单 -->
+        <div class="form-container" id="allergyForm">
+            <div class="form-section">
+                <h2 class="section-title allergy">
+                    <span>⚠️</span>
+                    造影剂过敏风险评估 - 2024版标准
+                </h2>
+                <div class="info-box allergy">
+                    <strong>🔬 2024版造影剂过敏风险评估系统：</strong><br>
+                    • 基于多因素评分模型进行风险分层<br>
+                    • 主要风险因素（3分）、次要风险因素（2分）、轻微风险因素（1分）<br>
+                    • 总分≥6分为极高风险，4-5分为高风险，2-3分为中等风险<br>
+                    • 提供个性化预处理方案和监护建议
+                </div>
+
+                <div class="info-box normal">
+                    <strong>📊 风险评估分级标准：</strong><br>
+                    <table class="grading-table">
+                        <thead>
+                            <tr>
+                                <th>风险等级</th>
+                                <th>总分范围</th>
+                                <th>反应发生率</th>
+                                <th>处理策略</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="grade-level grade-minimal">无明显风险</td>
+                                <td>0分</td>
+                                <td>0.1-0.5%</td>
+                                <td>标准监测</td>
+                            </tr>
+                            <tr>
+                                <td class="grade-level grade-low">低风险</td>
+                                <td>1分</td>
+                                <td>1-2%</td>
+                                <td>考虑预处理</td>
+                            </tr>
+                            <tr>
+                                <td class="grade-level grade-moderate">中等风险</td>
+                                <td>2-3分</td>
+                                <td>2-5%</td>
+                                <td>标准预处理</td>
+                            </tr>
+                            <tr>
+                                <td class="grade-level grade-high">高风险</td>
+                                <td>4-5分</td>
+                                <td>5-10%</td>
+                                <td>强化预处理</td>
+                            </tr>
+                            <tr>
+                                <td class="grade-level grade-very-high">极高风险</td>
+                                <td>≥6分</td>
+                                <td>10-30%</td>
+                                <td>避免使用</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- A. 造影剂使用史评估 -->
+                <div class="form-section">
+                    <h3 style="color: var(--allergy-color); margin-bottom: 15px;">A. 造影剂使用史评估</h3>
+                    
+                    <div class="form-group">
+                        <label>1. 是否曾经使用过造影剂？</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="radio" name="previousContrast" value="no" id="prevContrast-no">
+                                <label for="prevContrast-no">否，从未使用过</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="previousContrast" value="yes" id="prevContrast-yes">
+                                <label for="prevContrast-yes">是，曾经使用过</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="contrastHistoryDetails" style="display: none;">
+                        <div class="form-group">
+                            <label>2. 上次使用造影剂时的反应情况？</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="radio" name="previousReaction" value="none" id="reaction-none">
+                                    <label for="reaction-none">无任何反应</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="radio" name="previousReaction" value="mild" id="reaction-mild">
+                                    <label for="reaction-mild">轻微反应（+1分）</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="radio" name="previousReaction" value="moderate" id="reaction-moderate">
+                                    <label for="reaction-moderate">中度反应（+3分）</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="radio" name="previousReaction" value="severe" id="reaction-severe">
+                                    <label for="reaction-severe">严重反应（+3分）</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>3. 具体反应症状（可多选）：</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="symptom-rash">
+                                    <label for="symptom-rash">皮疹/荨麻疹</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="symptom-itch">
+                                    <label for="symptom-itch">全身瘙痒</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="symptom-nausea">
+                                    <label for="symptom-nausea">恶心呕吐</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="symptom-dizzy">
+                                    <label for="symptom-dizzy">头晕头痛</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="symptom-dyspnea">
+                                    <label for="symptom-dyspnea">呼吸困难</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="symptom-edema">
+                                    <label for="symptom-edema">喉头水肿</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="symptom-hypotension">
+                                    <label for="symptom-hypotension">血压下降</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="symptom-consciousness">
+                                    <label for="symptom-consciousness">意识改变</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- B. 过敏史评估 -->
+                <div class="form-section">
+                    <h3 style="color: var(--allergy-color); margin-bottom: 15px;">B. 过敏史评估</h3>
+                    
+                    <div class="form-group">
+                        <label>1. 药物过敏史（可多选）：</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="drug-none">
+                                <label for="drug-none">无药物过敏史</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="drug-penicillin">
+                                <label for="drug-penicillin">青霉素类</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="drug-cephalosporin">
+                                <label for="drug-cephalosporin">头孢类</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="drug-sulfa">
+                                <label for="drug-sulfa">磺胺类</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="drug-aspirin">
+                                <label for="drug-aspirin">阿司匹林</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="drug-multiple">
+                                <label for="drug-multiple">≥3种不相关药物（+2分）</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="drug-severe-allergy">
+                                <label for="drug-severe-allergy">严重过敏反应史（+3分）</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>2. 食物过敏史（可多选）：</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="food-none">
+                                <label for="food-none">无食物过敏史</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="food-seafood">
+                                <label for="food-seafood">海鲜类（+1分）</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="food-nuts">
+                                <label for="food-nuts">坚果类（+1分）</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="food-milk">
+                                <label for="food-milk">牛奶蛋白</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="food-egg">
+                                <label for="food-egg">鸡蛋</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="food-others">
+                                <label for="food-others">其他食物</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>3. 哮喘评估：</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="radio" name="asthma" value="none" id="asthma-none">
+                                <label for="asthma-none">无哮喘病史</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="asthma" value="mild" id="asthma-mild">
+                                <label for="asthma-mild">轻度哮喘（+1分）</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="asthma" value="severe" id="asthma-severe">
+                                <label for="asthma-severe">重度哮喘（+2分）</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="asthma" value="allergic" id="asthma-allergic">
+                                <label for="asthma-allergic">哮喘伴过敏史（+3分）</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>4. 其他过敏性疾病（可多选）：</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other-rhinitis">
+                                <label for="other-rhinitis">过敏性鼻炎（+1分）</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other-eczema">
+                                <label for="other-eczema">湿疹/特应性皮炎（+1分）</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other-urticaria">
+                                <label for="other-urticaria">慢性荨麻疹</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other-contact">
+                                <label for="other-contact">接触性皮炎</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- C. 特殊情况评估 -->
+                <div class="form-section">
+                    <h3 style="color: var(--allergy-color); margin-bottom: 15px;">C. 特殊情况评估</h3>
+                    
+                    <div class="form-group">
+                        <label>1. 特殊疾病史（可多选）：</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="special-mastocytosis">
+                                <label for="special-mastocytosis">肥大细胞增多症（+2分）</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="special-heart">
+                                <label for="special-heart">严重心脏病</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="special-thyroid">
+                                <label for="special-thyroid">甲状腺功能亢进</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>2. 当前用药情况（可多选）：</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="med-beta-blocker">
+                                <label for="med-beta-blocker">β受体阻滞剂</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="med-ace">
+                                <label for="med-ace">ACE抑制剂</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="med-metformin">
+                                <label for="med-metformin">二甲双胍</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="med-antihistamine">
+                                <label for="med-antihistamine">抗组胺药物</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 风险评分显示 -->
+                <div class="risk-score-display" id="allergyRiskScore" style="display: none;">
+                    <div class="score-value" id="riskScoreValue">0</div>
+                    <div id="riskLevelText">风险等级评估中...</div>
+                </div>
+            </div>
+        </div>
+
         <!-- 通用操作区域 -->
         <div class="form-container show" id="actionForm">
             <div class="form-section">
@@ -1432,10 +1742,10 @@
                 </div>
                 <div class="btn-group">
                     <button class="btn" onclick="calculate()" id="calculateBtn" disabled>
-                        <span>🧮</span> 计算参考数值
+                        <span>🧮</span> 开始评估计算
                     </button>
                     <button class="btn btn-secondary" onclick="exportToPDF()" id="pdfBtn" disabled>
-                        <span>📄</span> 导出PDF
+                        <span>📄</span> 导出评估报告
                     </button>
                     <button class="btn btn-secondary" onclick="resetForm()" id="resetBtn">
                         <span>🔄</span> 重新选择
@@ -1447,7 +1757,7 @@
         <div class="results" id="results">
             <h2 class="section-title">
                 <span>📊</span>
-                计算结果
+                评估结果
             </h2>
             <div id="calculationResults"></div>
         </div>
@@ -1457,9 +1767,10 @@
             <p><span class="highlight">专业背景要求：</span>使用者须是在医学影像科工作的专业人员，熟悉CT检查流程和造影剂使用规范。</p>
             <p><span class="highlight">设备依据：</span>本工具计算公式基于联影CT960+设备的技术参数和临床研究数据。</p>
             <p><span class="highlight">学术用途：</span>仅供影像技术教学、学术研究使用，严禁用于临床诊断或治疗决策。</p>
-            <p><span class="highlight">四类分组：</span>正常患者采用标准计算，肾功能异常患者需eGFR评估，二甲双胍患者需风险评估，心功能不全患者需NYHA分级评估。</p>
+            <p><span class="highlight">五大评估系统：</span>正常患者标准计算、肾功能异常患者eGFR评估、二甲双胍患者风险评估、心功能不全患者NYHA分级评估、造影剂过敏风险评估。</p>
+            <p><span class="highlight">过敏评估系统：</span>基于2024版国际指南，但不能100%预测过敏反应，临床使用时必须配备完善的抢救措施。</p>
             <p><span class="highlight">eGFR计算：</span>采用2021版CKD-EPI公式（无种族系数），适用于中国人群。</p>
-            <p><span class="highlight">安全限制：</span>程序已设置造影剂用量和注射流速的安全上限，但实际使用需结合患者具体情况充分评估血管通路、心肾功能。</p>
+            <p><span class="highlight">安全限制：</span>程序已设置造影剂用量和注射流速的安全上限，但实际使用需结合患者具体情况充分评估。</p>
             <p style="margin-top: 15px; font-weight: 700; color: #b45309; border-top: 1px solid #fed7aa; padding-top: 15px;">
                 开发者不承担任何直接或间接的法律责任；使用即表示同意本声明。程序使用过程中如遇到问题及反馈，请联系邮箱：lucky@taothink.com
             </p>
@@ -1485,7 +1796,8 @@
         const appState = {
             isDarkMode: false,
             currentPatientType: null,
-            currentResults: null
+            currentResults: null,
+            allergyRiskScore: 0
         };
 
         // 电子钟相关函数
@@ -1578,6 +1890,8 @@
 
         function resetForm() {
             appState.currentPatientType = null;
+            appState.allergyRiskScore = 0;
+            
             document.querySelectorAll('.category-card').forEach(card => {
                 card.classList.remove('active');
             });
@@ -1588,13 +1902,17 @@
                 }
             });
             
-            document.querySelectorAll('input[type="number"]').forEach(input => {
+            document.querySelectorAll('input[type="number"], input[type="text"]').forEach(input => {
                 input.value = '';
                 input.classList.remove('input-error');
             });
             
             document.querySelectorAll('select').forEach(select => {
                 select.selectedIndex = 0;
+            });
+            
+            document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+                input.checked = false;
             });
             
             document.querySelectorAll('.real-time-validation').forEach(el => {
@@ -1609,6 +1927,12 @@
                 el.style.display = 'none';
             });
             
+            const historyDetails = document.getElementById('contrastHistoryDetails');
+            if (historyDetails) historyDetails.style.display = 'none';
+            
+            const riskScoreDisplay = document.getElementById('allergyRiskScore');
+            if (riskScoreDisplay) riskScoreDisplay.style.display = 'none';
+            
             const results = document.getElementById('results');
             results.classList.remove('show');
             appState.currentResults = null;
@@ -1620,7 +1944,7 @@
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
-            showNotification('✅ 表单已重置，请重新选择患者类型', 'success');
+            showNotification('✅ 表单已重置，请重新选择评估类型', 'success');
         }
 
         // 2021年CKD-EPI eGFR计算函数
@@ -1795,109 +2119,6 @@
             return score;
         }
 
-        function setupRealTimeValidation() {
-            const validationRules = {
-                Height: { min: 100, max: 250, message: '身高必须在100-250cm之间' },
-                Weight: { min: 20, max: 200, message: '体重必须在20-200kg之间' },
-                Creatinine: { min: 30, max: 500, message: '血肌酐值必须在30-500μmol/L之间' },
-                Age: { min: 18, max: 120, message: '年龄必须在18-120岁之间' },
-                EF: { min: 10, max: 80, message: 'EF值必须在10-80%之间' }
-            };
-
-            ['normal', 'renal', 'metformin', 'heart'].forEach(type => {
-                Object.keys(validationRules).forEach(fieldType => {
-                    const fieldId = type + fieldType;
-                    const field = document.getElementById(fieldId);
-                    const validation = document.getElementById(`${fieldId}-validation`);
-                    const error = document.getElementById(`${fieldId}-error`);
-                    
-                    if (field) {
-                        field.addEventListener('input', function() {
-                            validateField(this, validationRules[fieldType], validation, error);
-                            updateProgress();
-                            
-                            if (fieldType === 'Creatinine' && (type === 'renal' || type === 'metformin')) {
-                                updateFormulaDisplay(type);
-                            }
-                        });
-                    }
-                });
-            });
-        }
-
-        function validateField(field, rule, validationEl, errorEl) {
-            const value = parseFloat(field.value);
-            const isValid = !isNaN(value) && value >= rule.min && value <= rule.max;
-            
-            if (field.value === '') {
-                field.classList.remove('input-error');
-                if (validationEl) validationEl.textContent = '';
-                if (errorEl) errorEl.style.display = 'none';
-                return null;
-            }
-            
-            if (isValid) {
-                field.classList.remove('input-error');
-                if (validationEl) {
-                    validationEl.textContent = '✓';
-                    validationEl.className = 'real-time-validation validation-success';
-                }
-                if (errorEl) errorEl.style.display = 'none';
-                return true;
-            } else {
-                field.classList.add('input-error');
-                if (validationEl) {
-                    validationEl.textContent = '✗';
-                    validationEl.className = 'real-time-validation validation-error';
-                }
-                if (errorEl) errorEl.style.display = 'block';
-                return false;
-            }
-        }
-
-        function updateProgress() {
-            if (!appState.currentPatientType) {
-                const progressBar = document.getElementById('progress');
-                if (progressBar) progressBar.style.width = '0%';
-                const calculateBtn = document.getElementById('calculateBtn');
-                if (calculateBtn) calculateBtn.disabled = true;
-                return;
-            }
-            
-            const requiredFields = getRequiredFields(appState.currentPatientType);
-            let completedFields = 0;
-            
-            requiredFields.forEach(fieldId => {
-                const field = document.getElementById(fieldId);
-                if (field && field.value !== '') {
-                    completedFields++;
-                }
-            });
-            
-            const progress = (completedFields / requiredFields.length) * 100;
-            const progressBar = document.getElementById('progress');
-            if (progressBar) {
-                progressBar.style.width = progress + '%';
-            }
-            
-            const calculateBtn = document.getElementById('calculateBtn');
-            if (calculateBtn) {
-                calculateBtn.disabled = progress < 100;
-            }
-        }
-
-        function getRequiredFields(type) {
-            const baseFields = [`${type}Height`, `${type}Weight`];
-            
-            if (type === 'renal' || type === 'metformin') {
-                baseFields.push(`${type}Creatinine`, `${type}Age`);
-            } else if (type === 'heart') {
-                baseFields.push(`${type}EF`);
-            }
-            
-            return baseFields;
-        }
-
         function assessMetforminRisk(eGFR, dose, age) {
             let riskLevel = 'low';
             let recommendations = [];
@@ -1973,12 +2194,455 @@
             return score;
         }
 
-        function calculate() {
+        // 造影剂过敏风险评估
+        function calculateAllergyRiskScore() {
+            let score = 0;
+            
+            // 既往造影剂反应评估
+            const previousReaction = document.querySelector('input[name="previousReaction"]:checked');
+            if (previousReaction) {
+                switch(previousReaction.value) {
+                    case 'mild': score += 1; break;
+                    case 'moderate': 
+                    case 'severe': score += 3; break;
+                }
+            }
+            
+            // 多种药物过敏
+            if (document.getElementById('drug-multiple')?.checked) score += 2;
+            
+            // 严重过敏反应史
+            if (document.getElementById('drug-severe-allergy')?.checked) score += 3;
+            
+            // 食物过敏
+            if (document.getElementById('food-seafood')?.checked || 
+                document.getElementById('food-nuts')?.checked) score += 1;
+            
+            // 哮喘评估
+            const asthma = document.querySelector('input[name="asthma"]:checked');
+            if (asthma) {
+                switch(asthma.value) {
+                    case 'mild': score += 1; break;
+                    case 'severe': score += 2; break;
+                    case 'allergic': score += 3; break;
+                }
+            }
+            
+            // 其他过敏性疾病
+            if (document.getElementById('other-rhinitis')?.checked) score += 1;
+            if (document.getElementById('other-eczema')?.checked) score += 1;
+            
+            // 特殊疾病
+            if (document.getElementById('special-mastocytosis')?.checked) score += 2;
+            
+            return score;
+        }
+
+        function assessAllergyRisk(score) {
+            let riskLevel, riskText, riskColor, reactionRate, strategy, premedication;
+            
+            if (score === 0) {
+                riskLevel = 'minimal';
+                riskText = '无明显风险';
+                riskColor = 'score-minimal';
+                reactionRate = '0.1-0.5%';
+                strategy = '标准监测';
+                premedication = '无需预处理，常规监测即可';
+            } else if (score === 1) {
+                riskLevel = 'low';
+                riskText = '低风险';
+                riskColor = 'score-low';
+                reactionRate = '1-2%';
+                strategy = '考虑预处理';
+                premedication = '可考虑检查前1小时给予苯海拉明25mg口服';
+            } else if (score >= 2 && score <= 3) {
+                riskLevel = 'moderate';
+                riskText = '中等风险';
+                riskColor = 'score-moderate';
+                reactionRate = '2-5%';
+                strategy = '标准预处理方案';
+                premedication = `检查前13小时：强的松50mg口服
+检查前1小时：苯海拉明50mg肌注或口服`;
+            } else if (score >= 4 && score <= 5) {
+                riskLevel = 'high';
+                riskText = '高风险';
+                riskColor = 'score-high';
+                reactionRate = '5-10%';
+                strategy = '强化预处理+专科评估';
+                premedication = `检查前13小时和7小时：甲泼尼龙40mg IV
+检查前1小时：苯海拉明50mg IV + 雷尼替丁50mg IV
+建议过敏科会诊评估`;
+            } else {
+                riskLevel = 'very-high';
+                riskText = '极高风险';
+                riskColor = 'score-very-high';
+                reactionRate = '10-30%';
+                strategy = '避免使用或过敏科会诊';
+                premedication = `强烈建议避免造影剂检查
+如必须检查：过敏科会诊，ICU监护条件下进行
+紧急预处理：检查前4-6小时，甲泼尼龙40mg IV，每4小时一次，共3次`;
+            }
+            
+            const recommendations = generateAllergyRecommendations(score);
+            const emergencyPrep = generateEmergencyPreparation(riskLevel);
+            
+            return {
+                riskLevel,
+                riskText,
+                riskColor,
+                reactionRate,
+                strategy,
+                premedication,
+                recommendations,
+                emergencyPrep,
+                contrastChoice: generateContrastChoice(riskLevel)
+            };
+        }
+
+        function generateAllergyRecommendations(score) {
+            const recommendations = [];
+            
+            if (score === 0) {
+                recommendations.push(
+                    '常规生命体征监测',
+                    '观察皮肤和呼吸道变化',
+                    '检查后观察30分钟'
+                );
+            } else if (score === 1) {
+                recommendations.push(
+                    '密切观察前30分钟',
+                    '准备抗过敏药物',
+                    '患者教育：及时报告不适'
+                );
+            } else if (score >= 2 && score <= 3) {
+                recommendations.push(
+                    '建立可靠静脉通路',
+                    '连续心电监护',
+                    '血压、血氧饱和度监测',
+                    '准备肾上腺素、激素等急救药物',
+                    '检查后观察1-2小时'
+                );
+            } else if (score >= 4 && score <= 5) {
+                recommendations.push(
+                    '多路静脉通路',
+                    '连续监护设备',
+                    '麻醉科或ICU医师在场',
+                    '气管插管设备准备',
+                    '完善的过敏反应抢救方案',
+                    '检查后观察4-6小时'
+                );
+            } else {
+                recommendations.push(
+                    '强烈建议重新评估检查必要性',
+                    '考虑MRI、超声等替代方法',
+                    '如无法避免：过敏科联合会诊',
+                    'ICU监护条件下进行',
+                    '完整的过敏反应抢救团队'
+                );
+            }
+            
+            return recommendations;
+        }
+
+        function generateEmergencyPreparation(riskLevel) {
+            const prep = {
+                medications: [],
+                equipment: [],
+                personnel: []
+            };
+            
+            // 基础药物准备
+            prep.medications.push(
+                '肾上腺素 1:1000',
+                '甲泼尼龙 40-125mg',
+                '苯海拉明 25-50mg',
+                '雷尼替丁 50mg'
+            );
+            
+            // 基础设备
+            prep.equipment.push(
+                '心电监护设备',
+                '血压监测',
+                '脉搏血氧仪',
+                '氧气供应系统',
+                '静脉输液用品'
+            );
+            
+            if (riskLevel === 'high' || riskLevel === 'very-high') {
+                prep.medications.push(
+                    '多巴胺',
+                    '去甲肾上腺素',
+                    '氨茶碱',
+                    '地塞米松'
+                );
+                
+                prep.equipment.push(
+                    '气管插管设备',
+                    '简易呼吸器',
+                    '除颤器',
+                    '中心静脉置管包'
+                );
+                
+                prep.personnel.push(
+                    '经验丰富的放射科医师',
+                    '麻醉科医师',
+                    '急救护士'
+                );
+            }
+            
+            if (riskLevel === 'very-high') {
+                prep.personnel.push(
+                    '过敏科医师',
+                    'ICU医师',
+                    '急救团队'
+                );
+            }
+            
+            return prep;
+        }
+
+        function generateContrastChoice(riskLevel) {
+            let choice = '';
+            
+            switch(riskLevel) {
+                case 'minimal':
+                case 'low':
+                    choice = '标准低渗造影剂（如碘海醇、碘普罗胺）';
+                    break;
+                case 'moderate':
+                    choice = '低渗造影剂，首选碘克沙醇（等渗）';
+                    break;
+                case 'high':
+                    choice = '等渗造影剂（碘克沙醇），考虑皮试';
+                    break;
+                case 'very-high':
+                    choice = '强烈建议避免使用，考虑MRI增强或超声检查';
+                    break;
+            }
+            
+            return choice;
+        }
+
+        function setupRealTimeValidation() {
+            const validationRules = {
+                Height: { min: 100, max: 250, message: '身高必须在100-250cm之间' },
+                Weight: { min: 20, max: 200, message: '体重必须在20-200kg之间' },
+                Creatinine: { min: 30, max: 500, message: '血肌酐值必须在30-500μmol/L之间' },
+                Age: { min: 18, max: 120, message: '年龄必须在18-120岁之间' },
+                EF: { min: 10, max: 80, message: 'EF值必须在10-80%之间' }
+            };
+
+            ['normal', 'renal', 'metformin', 'heart'].forEach(type => {
+                Object.keys(validationRules).forEach(fieldType => {
+                    const fieldId = type + fieldType;
+                    const field = document.getElementById(fieldId);
+                    const validation = document.getElementById(`${fieldId}-validation`);
+                    const error = document.getElementById(`${fieldId}-error`);
+                    
+                    if (field) {
+                        field.addEventListener('input', function() {
+                            validateField(this, validationRules[fieldType], validation, error);
+                            updateProgress();
+                            
+                            if (fieldType === 'Creatinine' && (type === 'renal' || type === 'metformin')) {
+                                updateFormulaDisplay(type);
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        function validateField(field, rule, validationEl, errorEl) {
+            const value = parseFloat(field.value);
+            const isValid = !isNaN(value) && value >= rule.min && value <= rule.max;
+            
+            if (field.value === '') {
+                field.classList.remove('input-error');
+                if (validationEl) validationEl.textContent = '';
+                if (errorEl) errorEl.style.display = 'none';
+                return null;
+            }
+            
+            if (isValid) {
+                field.classList.remove('input-error');
+                if (validationEl) {
+                    validationEl.textContent = '✓';
+                    validationEl.className = 'real-time-validation validation-success';
+                }
+                if (errorEl) errorEl.style.display = 'none';
+                return true;
+            } else {
+                field.classList.add('input-error');
+                if (validationEl) {
+                    validationEl.textContent = '✗';
+                    validationEl.className = 'real-time-validation validation-error';
+                }
+                if (errorEl) errorEl.style.display = 'block';
+                return false;
+            }
+        }
+
+        // 监听造影剂使用史选择
+        document.addEventListener('change', function(e) {
+            if (e.target.name === 'previousContrast') {
+                const historyDetails = document.getElementById('contrastHistoryDetails');
+                if (e.target.value === 'yes') {
+                    historyDetails.style.display = 'block';
+                } else {
+                    historyDetails.style.display = 'none';
+                }
+                updateAllergyRiskScore();
+            }
+            
+            // 监听所有过敏评估相关的输入变化
+            if (e.target.closest('#allergyForm')) {
+                updateAllergyRiskScore();
+            }
+        });
+
+        function updateAllergyRiskScore() {
+            if (appState.currentPatientType !== 'allergy') return;
+            
+            const score = calculateAllergyRiskScore();
+            appState.allergyRiskScore = score;
+            
+            const riskAssessment = assessAllergyRisk(score);
+            const scoreDisplay = document.getElementById('allergyRiskScore');
+            const scoreValue = document.getElementById('riskScoreValue');
+            const riskLevelText = document.getElementById('riskLevelText');
+            
+            if (scoreDisplay && scoreValue && riskLevelText) {
+                scoreValue.textContent = score;
+                scoreValue.className = `score-value ${riskAssessment.riskColor}`;
+                riskLevelText.innerHTML = `
+                    <div style="font-size: 1.2em; margin-bottom: 5px; font-weight: 600;">${riskAssessment.riskText} (${riskAssessment.reactionRate})</div>
+                    <div style="font-size: 0.9em; opacity: 0.8;">${riskAssessment.strategy}</div>
+                `;
+                scoreDisplay.style.display = 'block';
+            }
+            
+            updateProgress();
+        }
+
+        function updateProgress() {
             if (!appState.currentPatientType) {
-                showNotification('请先选择患者类型', 'error');
+                const progressBar = document.getElementById('progress');
+                if (progressBar) progressBar.style.width = '0%';
+                const calculateBtn = document.getElementById('calculateBtn');
+                if (calculateBtn) calculateBtn.disabled = true;
                 return;
             }
             
+            let progress = 0;
+            
+            if (appState.currentPatientType === 'allergy') {
+                // 过敏评估的进度计算
+                const totalQuestions = 10;
+                let answeredQuestions = 0;
+                
+                if (document.querySelector('input[name="previousContrast"]:checked')) answeredQuestions++;
+                if (document.querySelector('input[name="asthma"]:checked')) answeredQuestions++;
+                if (document.querySelector('#drug-none:checked') || 
+                    document.querySelector('#allergyForm input[id^="drug-"]:checked')) answeredQuestions++;
+                if (document.querySelector('#food-none:checked') || 
+                    document.querySelector('#allergyForm input[id^="food-"]:checked')) answeredQuestions++;
+                
+                const otherCheckboxes = document.querySelectorAll('#allergyForm input[id^="other-"]:checked, #allergyForm input[id^="special-"]:checked, #allergyForm input[id^="med-"]:checked');
+                if (otherCheckboxes.length > 0) answeredQuestions += 2;
+                
+                progress = Math.min((answeredQuestions / totalQuestions) * 100, 100);
+            } else {
+                const requiredFields = getRequiredFields(appState.currentPatientType);
+                let completedFields = 0;
+                
+                requiredFields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    if (field && field.value !== '') {
+                        completedFields++;
+                    }
+                });
+                
+                progress = (completedFields / requiredFields.length) * 100;
+            }
+            
+            const progressBar = document.getElementById('progress');
+            if (progressBar) {
+                progressBar.style.width = progress + '%';
+            }
+            
+            const calculateBtn = document.getElementById('calculateBtn');
+            if (calculateBtn) {
+                calculateBtn.disabled = progress < 80;
+            }
+        }
+
+        function getRequiredFields(type) {
+            const baseFields = [`${type}Height`, `${type}Weight`];
+            
+            if (type === 'renal' || type === 'metformin') {
+                baseFields.push(`${type}Creatinine`, `${type}Age`);
+            } else if (type === 'heart') {
+                baseFields.push(`${type}EF`);
+            }
+            
+            return baseFields;
+        }
+
+        function calculate() {
+            if (!appState.currentPatientType) {
+                showNotification('请先选择评估类型', 'error');
+                return;
+            }
+            
+            try {
+                let results;
+                
+                if (appState.currentPatientType === 'allergy') {
+                    results = calculateAllergyAssessment();
+                } else {
+                    results = calculateContrastDosage();
+                }
+                
+                displayResults(results);
+                appState.currentResults = results;
+                document.getElementById('pdfBtn').disabled = false;
+                showNotification('评估计算完成！', 'success');
+            } catch (error) {
+                console.error('计算过程出错:', error);
+                showNotification('计算过程中出现错误：' + error.message, 'error');
+            }
+        }
+
+        function calculateAllergyAssessment() {
+            const score = calculateAllergyRiskScore();
+            const riskAssessment = assessAllergyRisk(score);
+            
+            const previousContrast = document.querySelector('input[name="previousContrast"]:checked')?.value || 'unknown';
+            const previousReaction = document.querySelector('input[name="previousReaction"]:checked')?.value || 'none';
+            const asthma = document.querySelector('input[name="asthma"]:checked')?.value || 'none';
+            
+            const selectedRiskFactors = [];
+            document.querySelectorAll('#allergyForm input:checked').forEach(input => {
+                const label = document.querySelector(`label[for="${input.id}"]`);
+                if (label && !input.name) {
+                    selectedRiskFactors.push(label.textContent.trim());
+                }
+            });
+            
+            return {
+                patientType: 'allergy',
+                score,
+                riskAssessment,
+                previousContrast,
+                previousReaction,
+                asthma,
+                selectedRiskFactors,
+                timestamp: new Date()
+            };
+        }
+
+        function calculateContrastDosage() {
             const type = appState.currentPatientType;
             
             const heightElement = document.getElementById(`${type}Height`);
@@ -1989,8 +2653,7 @@
             const examTypeElement = document.getElementById(`${type}ExamType`);
             
             if (!heightElement || !weightElement || !heartRateElement || !examTypeElement) {
-                showNotification('表单元素缺失，请刷新页面重试', 'error');
-                return;
+                throw new Error('表单元素缺失，请检查输入');
             }
             
             const height = parseFloat(heightElement.value);
@@ -1998,13 +2661,11 @@
             const heartRate = parseInt(heartRateElement.value);
             const examType = examTypeElement.value;
 
-            const validationErrors = [];
-            
             if (!height || height < 100 || height > 250) {
-                validationErrors.push('身高范围应在100-250cm之间');
+                throw new Error('身高范围应在100-250cm之间');
             }
             if (!weight || weight < 20 || weight > 200) {
-                validationErrors.push('体重范围应在20-200kg之间');
+                throw new Error('体重范围应在20-200kg之间');
             }
 
             let specialData = null;
@@ -2015,31 +2676,29 @@
                 const gender = document.getElementById(`${type}Gender`).value;
 
                 if (!creatinine || creatinine < 30 || creatinine > 500) {
-                    validationErrors.push('血肌酐值范围应在30-500 μmol/L之间');
+                    throw new Error('血肌酐值范围应在30-500 μmol/L之间');
                 }
                 if (!age || age < 18 || age > 120) {
-                    validationErrors.push('年龄范围应在18-120岁之间');
+                    throw new Error('年龄范围应在18-120岁之间');
                 }
 
-                if (validationErrors.length === 0) {
-                    const eGFR = calculateEGFR_2021_Corrected(creatinine, age, gender);
-                    const eGFRDetails = generateSimplifiedEGFRCalculation(creatinine, age, gender);
-                    
-                    specialData = {
-                        eGFR,
-                        creatinine,
-                        age,
-                        gender,
-                        calculationMethod: '2021版CKD-EPI公式',
-                        eGFRDetails
-                    };
-                    
-                    if (type === 'metformin') {
-                        const dose = document.getElementById('metforminDose').value;
-                        const metforminRisk = assessMetforminRisk(eGFR, dose, age);
-                        specialData.metforminRisk = metforminRisk;
-                        specialData.dose = dose;
-                    }
+                const eGFR = calculateEGFR_2021_Corrected(creatinine, age, gender);
+                const eGFRDetails = generateSimplifiedEGFRCalculation(creatinine, age, gender);
+                
+                specialData = {
+                    eGFR,
+                    creatinine,
+                    age,
+                    gender,
+                    calculationMethod: '2021版CKD-EPI公式',
+                    eGFRDetails
+                };
+                
+                if (type === 'metformin') {
+                    const dose = document.getElementById('metforminDose').value;
+                    const metforminRisk = assessMetforminRisk(eGFR, dose, age);
+                    specialData.metforminRisk = metforminRisk;
+                    specialData.dose = dose;
                 }
             } else if (type === 'heart') {
                 const nyha = document.getElementById('heartNYHA').value;
@@ -2048,33 +2707,20 @@
                 const creatinine = parseFloat(document.getElementById('heartCreatinine').value) || null;
 
                 if (!ef || ef < 10 || ef > 80) {
-                    validationErrors.push('EF值范围应在10-80%之间');
+                    throw new Error('EF值范围应在10-80%之间');
                 }
 
-                if (validationErrors.length === 0) {
-                    const heartRisk = assessHeartFailureRisk(nyha, ef, bnp);
-                    specialData = {
-                        nyha,
-                        ef,
-                        bnp,
-                        heartRisk,
-                        creatinine
-                    };
-                }
+                const heartRisk = assessHeartFailureRisk(nyha, ef, bnp);
+                specialData = {
+                    nyha,
+                    ef,
+                    bnp,
+                    heartRisk,
+                    creatinine
+                };
             }
 
-            if (validationErrors.length > 0) {
-                showNotification('输入验证失败：' + validationErrors.join('，'), 'error');
-                return;
-            }
-
-            const results = performCalculations(height, weight, heartRate, examType, type, specialData);
-            displayResults(results);
-            
-            appState.currentResults = results;
-            document.getElementById('pdfBtn').disabled = false;
-            
-            showNotification('计算完成！', 'success');
+            return performCalculations(height, weight, heartRate, examType, type, specialData);
         }
 
         function performCalculations(height, weight, heartRate, examType, patientType, specialData) {
@@ -2164,6 +2810,107 @@
             const resultsDiv = document.getElementById('results');
             const resultsContent = document.getElementById('calculationResults');
             
+            if (results.patientType === 'allergy') {
+                displayAllergyResults(results, resultsContent);
+            } else {
+                displayContrastResults(results, resultsContent);
+            }
+            
+            resultsDiv.classList.add('show');
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function displayAllergyResults(results, container) {
+            const assessment = results.riskAssessment;
+            const riskColorClass = assessment.riskColor.replace('score-', 'grade-');
+            
+            let previousContrastText = '';
+            if (results.previousContrast === 'yes') {
+                const reactionTexts = {
+                    'none': '无反应',
+                    'mild': '轻微反应',
+                    'moderate': '中度反应',
+                    'severe': '严重反应'
+                };
+                previousContrastText = `既往使用过造影剂，反应情况：${reactionTexts[results.previousReaction] || '未知'}`;
+            } else {
+                previousContrastText = '既往未使用过造影剂';
+            }
+
+            const asthmaTexts = {
+                'none': '无哮喘病史',
+                'mild': '轻度哮喘',
+                'severe': '重度哮喘', 
+                'allergic': '哮喘伴过敏史'
+            };
+
+            container.innerHTML = `
+                <div class="calc-type">
+                    <div>造影剂过敏风险评估 | 2024版评估标准</div>
+                    <div style="font-size: 12px; opacity: 0.8; margin-top: 5px;">
+                        评估时间：${results.timestamp.toLocaleString()}
+                    </div>
+                </div>
+                
+                <div class="risk-score-display">
+                    <div class="score-value ${assessment.riskColor}">${results.score}</div>
+                    <div style="font-size: 1.2em; margin-bottom: 5px; font-weight: 600; color: var(--${riskColorClass}-color);">${assessment.riskText}</div>
+                    <div style="font-size: 0.9em; opacity: 0.8;">反应发生率：${assessment.reactionRate}</div>
+                </div>
+
+                <div class="result-item">
+                    <span class="result-label">既往造影剂使用史</span>
+                    <span class="result-value">${previousContrastText}</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">哮喘病史</span>
+                    <span class="result-value">${asthmaTexts[results.asthma] || '未评估'}</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">风险评分</span>
+                    <span class="result-value" style="color: var(--${riskColorClass}-color);">${results.score} 分</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">风险等级</span>
+                    <span class="result-value" style="color: var(--${riskColorClass}-color);">${assessment.riskText}</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">处理策略</span>
+                    <span class="result-value">${assessment.strategy}</span>
+                </div>
+
+                ${results.selectedRiskFactors.length > 0 ? `
+                <div class="info-box allergy">
+                    <strong>已识别的风险因素：</strong><br>
+                    ${results.selectedRiskFactors.map(factor => `• ${factor}`).join('<br>')}
+                </div>
+                ` : ''}
+
+                <div class="info-box ${riskColorClass}">
+                    <strong>预处理方案：</strong><br>
+                    ${assessment.premedication.split('\n').join('<br>')}
+                </div>
+
+                <div class="info-box normal">
+                    <strong>临床监护建议：</strong><br>
+                    ${assessment.recommendations.map(rec => `• ${rec}`).join('<br>')}
+                </div>
+
+                <div class="info-box normal">
+                    <strong>造影剂选择建议：</strong><br>
+                    ${assessment.contrastChoice}
+                </div>
+
+                <div class="info-box normal">
+                    <strong>应急药物准备：</strong><br>
+                    <strong>必备药物：</strong>${assessment.emergencyPrep.medications.join('、')}<br>
+                    <strong>必备设备：</strong>${assessment.emergencyPrep.equipment.join('、')}
+                    ${assessment.emergencyPrep.personnel.length > 0 ? `<br><strong>人员要求：</strong>${assessment.emergencyPrep.personnel.join('、')}` : ''}
+                </div>
+            `;
+        }
+
+        function displayContrastResults(results, container) {
             let bmiStatus, bmiClass;
             if (results.bmi < 18.5) {
                 bmiStatus = '偏瘦';
@@ -2375,7 +3122,7 @@
                 `;
             }
             
-            resultsContent.innerHTML = `
+            container.innerHTML = `
                 <div class="calc-type">
                     <div>患者类型：${patientTypeText} | 检查：${examTypeText} | 心率：${heartRateText}</div>
                     <div style="font-size: 12px; opacity: 0.8; margin-top: 5px;">
@@ -2426,24 +3173,21 @@
                     }<br>
                     <strong>注射流速：</strong>${results.examType === 'coronary' ? '用量÷12s' : '(用量-15ml)÷12s'}<br>
                     <strong>安全限制：</strong>${results.examType === 'coronary' ? '冠脉CTA最大60ml' : '胸痛三联最大75ml'}，流速最大5.0ml/s<br>
-                    <strong>程序版本：</strong>v3.4版本，基于2021版CKD-EPI公式计算
+                    <strong>程序版本：</strong>v4.1版本，完整功能增强版
                 </div>
             `;
-            
-            resultsDiv.classList.add('show');
-            resultsDiv.scrollIntoView({ behavior: 'smooth' });
         }
 
         function exportToPDF() {
             if (!appState.currentResults) {
-                showNotification('没有可导出的计算结果', 'warning');
+                showNotification('没有可导出的评估结果', 'warning');
                 return;
             }
             
             try {
                 const results = appState.currentResults;
                 
-                if (!results.height || !results.weight || !results.bmi || !results.contrastVolume) {
+                if (!results.height && !results.score && results.patientType !== 'allergy') {
                     throw new Error('计算结果数据不完整，无法生成PDF');
                 }
                 
@@ -2460,7 +3204,9 @@
                     return;
                 }
                 
-                const pdfContent = generateSimplifiedPDFContent(results, reportNumber);
+                const pdfContent = results.patientType === 'allergy' ? 
+                    generateAllergyPDFContent(results, reportNumber) : 
+                    generateSimplifiedPDFContent(results, reportNumber);
                 
                 pdfWindow.document.open();
                 pdfWindow.document.write(pdfContent);
@@ -2488,6 +3234,163 @@
                 console.error('PDF导出出错:', error);
                 showNotification('PDF导出失败: ' + error.message, 'error');
             }
+        }
+
+        function generateAllergyPDFContent(results, reportNumber) {
+            const currentDate = new Date().toLocaleString();
+            const assessment = results.riskAssessment;
+            
+            return `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>造影剂过敏风险评估报告_${reportNumber}</title>
+    <style>
+        @page { size: A4; margin: 1cm; }
+        body { 
+            font-family: 'Microsoft YaHei', 'SimSun', sans-serif; 
+            line-height: 1.4; 
+            color: #333; 
+            margin: 0; 
+            padding: 0; 
+            font-size: 11px; 
+        }
+        .header { 
+            text-align: center; 
+            border-bottom: 2px solid #8b5cf6; 
+            padding-bottom: 10px; 
+            margin-bottom: 20px; 
+        }
+        .header h1 { 
+            color: #8b5cf6; 
+            font-size: 20px; 
+            margin: 0 0 8px 0; 
+            font-weight: 700; 
+        }
+        .risk-score-section {
+            text-align: center;
+            background: linear-gradient(135deg, #e9d5ff, #d8b4fe);
+            border: 2px solid #8b5cf6;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .risk-score {
+            font-size: 48px;
+            font-weight: 700;
+            color: #581c87;
+            margin-bottom: 10px;
+        }
+        .risk-level {
+            font-size: 16px;
+            font-weight: 600;
+            color: #581c87;
+        }
+        .section {
+            margin: 15px 0;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+        .section-title {
+            font-weight: 700;
+            color: #8b5cf6;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 10px;
+        }
+        .recommendation-box {
+            background: linear-gradient(135deg, #f8f9fa, #f1f3f4);
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 10px 0;
+        }
+        .footer {
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            text-align: center;
+            font-size: 8px;
+            color: #666;
+            margin-top: 20px;
+        }
+        @media print { body { margin: 0; padding: 0; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>造影剂过敏风险评估报告</h1>
+        <div>2024版评估标准 | 评估时间: ${results.timestamp.toLocaleString()}</div>
+        <div>生成时间: ${currentDate} | 编号: ${reportNumber}</div>
+    </div>
+    
+    <div class="risk-score-section">
+        <div class="risk-score">${results.score}</div>
+        <div class="risk-level">${assessment.riskText} | 反应发生率: ${assessment.reactionRate}</div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">风险评估结果</div>
+        <div class="data-row">
+            <span>风险评分</span>
+            <span>${results.score} 分</span>
+        </div>
+        <div class="data-row">
+            <span>风险等级</span>
+            <span>${assessment.riskText}</span>
+        </div>
+        <div class="data-row">
+            <span>反应发生率</span>
+            <span>${assessment.reactionRate}</span>
+        </div>
+        <div class="data-row">
+            <span>处理策略</span>
+            <span>${assessment.strategy}</span>
+        </div>
+    </div>
+    
+    <div class="recommendation-box">
+        <div class="section-title">预处理方案</div>
+        <div style="font-size: 10px; line-height: 1.4;">
+            ${assessment.premedication.split('\n').join('<br>')}
+        </div>
+    </div>
+    
+    <div class="recommendation-box">
+        <div class="section-title">临床监护建议</div>
+        <div style="font-size: 10px; line-height: 1.4;">
+            ${assessment.recommendations.map(rec => `• ${rec}`).join('<br>')}
+        </div>
+    </div>
+    
+    <div class="recommendation-box">
+        <div class="section-title">造影剂选择建议</div>
+        <div style="font-size: 10px; line-height: 1.4;">
+            ${assessment.contrastChoice}
+        </div>
+    </div>
+    
+    <div class="recommendation-box">
+        <div class="section-title">应急准备</div>
+        <div style="font-size: 10px; line-height: 1.4;">
+            <strong>必备药物：</strong>${assessment.emergencyPrep.medications.join('、')}<br>
+            <strong>必备设备：</strong>${assessment.emergencyPrep.equipment.join('、')}
+            ${assessment.emergencyPrep.personnel.length > 0 ? `<br><strong>人员要求：</strong>${assessment.emergencyPrep.personnel.join('、')}` : ''}
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p><strong>重要声明:</strong> 本评估结果仅供学术研究参考，不能100%预测过敏反应。临床使用时必须结合患者具体情况，配备完善的抢救措施。</p>
+        <p><strong>报告编号:</strong> ${reportNumber} | <strong>程序版本:</strong> v4.1 | <strong>开发者:</strong> 影像涛哥</p>
+    </div>
+</body>
+</html>`;
         }
 
         function generateSimplifiedPDFContent(results, reportNumber) {
@@ -2912,7 +3815,7 @@
 <body>
     <div class="header">
         <h1>影像学术研究计算结果</h1>
-        <div class="subtitle">CTA造影剂用量与BMI学术参考计算 v3.4 - ${patientTypeText}</div>
+        <div class="subtitle">CTA造影剂用量计算系统 v4.1 - ${patientTypeText}</div>
         <div class="meta-info">
             计算时间: ${results.timestamp.toLocaleString()} | 生成时间: ${currentDate} | 编号: ${reportNumber}
         </div>
@@ -3023,7 +3926,7 @@
     </div>
     
     <div class="tech-specs">
-        <strong>程序版本:</strong> v3.4 | 
+        <strong>程序版本:</strong> v4.1 | 
         <strong>开发者:</strong> 影像涛哥 | 
         <strong>计算标准:</strong> 基于联影设备技术参数与临床研究数据 | 
         <strong>计算公式:</strong> 2021版CKD-EPI肾小球滤过率方程（无种族系数）
@@ -3079,6 +3982,15 @@
                 document.addEventListener('keypress', function(e) {
                     if (e.key === 'Enter' && !document.getElementById('calculateBtn').disabled) {
                         calculate();
+                    }
+                });
+                
+                // 监听所有表单输入变化
+                document.addEventListener('input', function(e) {
+                    updateProgress();
+                    
+                    if (e.target.closest('#allergyForm')) {
+                        updateAllergyRiskScore();
                     }
                 });
                 
