@@ -1759,7 +1759,7 @@
                         <span>🧮</span> 开始评估计算
                     </button>
                     <button class="btn btn-secondary" onclick="exportToPDF()" id="pdfBtn" disabled>
-                        <span>📄</span> 导出评估报告
+                        <span>📄</span> 导出评估结果
                     </button>
                     <button class="btn btn-secondary" onclick="resetForm()" id="resetBtn">
                         <span>🔄</span> 重新选择
@@ -3341,7 +3341,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>造影剂过敏风险评估报告_${reportNumber}</title>
+    <title>造影剂过敏风险评估结果_${reportNumber}</title>
     <style>
         @page { size: A4; margin: 1cm; }
         body { 
@@ -3422,7 +3422,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>造影剂过敏风险评估报告</h1>
+        <h1>造影剂过敏风险评估结果</h1>
         <div>2024版评估标准 | 评估时间: ${results.timestamp.toLocaleString()}</div>
         <div>生成时间: ${currentDate} | 编号: ${reportNumber}</div>
     </div>
@@ -3484,7 +3484,7 @@
     
     <div class="footer">
         <p><strong>重要声明:</strong> 本评估结果仅供学术研究参考,不能100%预测过敏反应。临床使用时必须结合患者具体情况,配备完善的抢救措施。</p>
-        <p><strong>报告编号:</strong> ${reportNumber} | <strong>程序版本:</strong> v4.2混合版 | <strong>开发者:</strong> 影像涛哥</p>
+        <p><strong>结果编号:</strong> ${reportNumber} | <strong>程序版本:</strong> v4.2混合版 | <strong>开发者:</strong> 影像涛哥</p>
     </div>
 </body>
 </html>`;
